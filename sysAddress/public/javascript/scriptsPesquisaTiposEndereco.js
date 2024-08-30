@@ -1,7 +1,3 @@
-function strZeros(campoStr, quantZeros) {
-  return String(campoStr).padStart(quantZeros, '0');
-}
-
 $(document).ready(function() {
   $('#modalTiposEndereco').modal('show'); //Esse código é em jQuery
 });

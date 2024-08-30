@@ -2,10 +2,6 @@ let currentPage      = 1;
 const recordsPerPage = 10;
 let lstLogradouros   = [];
 
-function strZeros(campoStr, quantZeros) {
-  return String(campoStr).padStart(quantZeros, '0');
-}
-
 $(document).ready(function() {
   $('#modalLogradouros').modal('show'); //Esse código é em jQuery.
 });
