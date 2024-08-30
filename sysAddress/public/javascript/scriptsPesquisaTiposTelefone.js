@@ -1,7 +1,3 @@
-function strZeros(campoStr, quantZeros) {
-  return String(campoStr).padStart(quantZeros, '0');
-}
-
 $(document).ready(function() {
   $('#modalTiposTelefone').modal('show'); //Esse código é em jQuery.
 
