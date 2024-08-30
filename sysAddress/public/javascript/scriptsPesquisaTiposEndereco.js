@@ -1,19 +1,11 @@
 $(document).ready(function() {
   $('#modalTiposEndereco').modal('show'); //Esse código é em jQuery
 
-  $(document).ready(function() {
-    $('#modalTiposEndereco').modal({
-      backdrop: 'static',
-      keyboard: false
-    });
-
-    // Redirecionar para /TelaInicial ao fechar o modal
-    $('#modalTiposEndereco').on('hide.bs.modal', function (e) {
-      if ($(e.target).hasClass('modal')) {
-        //window.location.href = '/TelaInicial';
-        e.preventDefault();
-      }
-    });
+  // Redirecionar para /TelaInicial ao fechar o modal
+  $('#modalTiposEndereco').on('hide.bs.modal', function (event) {
+    if ($(event.target).hasClass('modal')) {
+      window.location.href = '/TelaInicial';
+    }
   });
 });
 
