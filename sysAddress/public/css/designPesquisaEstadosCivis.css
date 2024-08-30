@@ -1,0 +1,25 @@
+#estadoCivilTable tbody tr {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 1;
+  padding: 0.2rem;
+}
+
+#estadoCivilTable th, #estadoCivilTable td {
+  padding: 0.2rem
+  text-align: left;
+}
+
+#estadoCivilTable tbody tr:hover {
+  cursor: pointer;
+  background-color: #e2e2e2;
+}
+
+.acoes-col {
+  width: 184px; 
+  text-align: center;
+}
+
+#idEstadoCivil {
+  text-align: center;
+}

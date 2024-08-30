@@ -1,0 +1,68 @@
+/* Estilos para telas maiores */
+body {
+  background-image: url("../imagens/background_login.jpg");
+  background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo com transparência */
+  background-blend-mode: lighten; /* Aplicando blend mode para clarear a imagem de fundo */
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  margin-top: 0; /* Removendo a margem superior */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Altura mínima de 100% da altura da viewport */
+}
+
+.card {
+  border: none; /* Removendo a borda */
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.5); /* Adicionando sombreamento branco */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-header, .card-header h3, .card-body label {
+  color: white;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.input-group-text {
+  background-color: #fff; /* Fundo branco para ícone */
+}
+
+#username {
+  text-transform: uppercase;
+}
+
+.forgot-password {
+  display: block;
+  margin-top: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  color: red;
+  text-decoration: none;
+}
+
+/* Estilos para telas menores */
+@media (max-width: 768px) {
+  .card {
+    box-shadow: 10px 3px 15px rgba(0, 0, 0, 0.1); /* Sombreamento */
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TESTE NODEJS</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/designHome.css">
+</head>
+<body>
+  <div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="card glass-effect">
+          <div class="card-header">
+            <h3 class="text-center">LOGIN</h3>
+          </div>
+          <div class="card-body">
+            <form id="loginForm" action="/validarUsuarioSenha" method="post">
+              <div class="form-group">
+                <label for="username">Usuário</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                  <input type="text" class="form-control" id="username" name="username" placeholder="Entre com seu usuário">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                  </div>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Entre com sua senha">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
+              <div class="text-center mt-3">
+                <a href="#" class="forgot-password">Esqueci a senha</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="javascript/scriptsHome.js"></script>
+</body>
+</html>
