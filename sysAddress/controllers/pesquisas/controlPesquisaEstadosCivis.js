@@ -1,5 +1,5 @@
 function controlPesquisaEstadosCivis(application, require, response) {
-    const connectionDB = application.config.dbConnection();
+    const connectionDB = application.config.dbConfig.dbConnection();
     const dbSysAddress = new application.sysAddress.models.dbSysAddress(connectionDB);
 
     dbSysAddress.getEstadosCivis(function(error, result) {
