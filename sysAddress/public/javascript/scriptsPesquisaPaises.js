@@ -2,14 +2,9 @@ $(document).ready(function() {
   $('#modalPaises').modal('show'); //Esse código é em jQuery.
 
   // Redirecionar para /TelaInicial ao fechar o modal
-  $('#modalPaises').on('hidden.bs.modal', function () {
-    window.location.href = '/TelaInicial';
-  });
-
-  // Evitar qualquer ação ao clicar fora do modal, mantendo-o aberto
-  $('#modalTiposPaises').on('click', function (e) {
-    if ($(e.target).hasClass('modal')) {
-      e.preventDefault(); // Impede o fechamento do modal e mantém a página atual
+  $('#modalPaises').on('hide.bs.modal', function (event) {
+    if ($(event.target).hasClass('modal')) {
+      window.location.href = '/TelaInicial';
     }
   });
 });

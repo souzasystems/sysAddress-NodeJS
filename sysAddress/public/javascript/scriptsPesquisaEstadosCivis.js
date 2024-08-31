@@ -1,5 +1,12 @@
 $(document).ready(function() {
   $('#modalEstadosCivis').modal('show'); //Esse código é em jQuery.
+
+  // Redirecionar para /TelaInicial ao fechar o modal
+  $('#modalEstadosCivis').on('hide.bs.modal', function (event) {
+    if ($(event.target).hasClass('modal')) {
+      window.location.href = '/TelaInicial';
+    }
+  });
 });
 
 function loadTableData(estadosCivis) {

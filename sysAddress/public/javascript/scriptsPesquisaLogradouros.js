@@ -4,6 +4,13 @@ let lstLogradouros   = [];
 
 $(document).ready(function() {
   $('#modalLogradouros').modal('show'); //Esse código é em jQuery.
+
+  // Redirecionar para /TelaInicial ao fechar o modal
+  $('#modalLogradouros').on('hide.bs.modal', function (event) {
+    if ($(event.target).hasClass('modal')) {
+      window.location.href = '/TelaInicial';
+    }
+  });
 });
 
 function iniciaVariaveis(logradouros) {
