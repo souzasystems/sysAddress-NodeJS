@@ -1,16 +1,16 @@
-#paisesTable tbody tr {
+#loteamentosTable tbody tr {
   width: 100%;
   border-collapse: collapse;
   line-height: 1;
   padding: 0.2rem;
 }
 
-#paisesTable th, #paisesTable td {
+#loteamentosTable th, #loteamentosTable td {
   padding: 0.2rem
   text-align: left;
 }
 
-#paisesTable tbody tr:hover {
+#loteamentosTable tbody tr:hover {
   cursor: pointer;
   background-color: #e2e2e2;
 }
@@ -20,6 +20,6 @@
   text-align: center;
 }
 
-#idPais, #paisInativo, #sigla03, #numeroDDI {
+#idLoteamento, #loteamentoInativo {
   text-align: center;
 }

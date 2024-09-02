@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Loteamentos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/stylePesquisaLoteamentos.css">
 </head>
 <body>
-    <h1>Olá, eu sou a view de pesquisa de loteamentos.</h1>    
+
+<div class="modal fade" data-backdrop="static" id="modalLoteamentos" tabindex="-1" role="dialog" aria-labelledby="modalLoteamentosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLoteamentosLabel">LOTEAMENTOS - PESQUISA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover table-striped" id="loteamentosTable">
+          <thead class="thead-dark">
+            <tr>
+              <th id="idLoteamento" scope="col">CÓDIGO</th>
+              <th scope="col">NOME</th>
+              <th scope="col">BAIRRO</th>
+              <th id="loteamentoInativo" scope="col">INATIVO</th>
+              <th scope="col" class="acoes-col">AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody id="gridLoteamentos">
+            <!-- Os registros serão carregados aqui -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">INSERIR LOTEAMENTO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="javascript/scriptsUtils.js"></script>
+<script src="javascript/scriptsPesquisaLoteamentos.js"></script>
+
 </body>
 </html>

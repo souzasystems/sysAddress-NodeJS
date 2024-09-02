@@ -32,6 +32,11 @@ dbSysAddress.prototype.getPaises = function(callBack) {
   this.dataBaseConnection.query(query, ['BRASIL', 0], callBack);
 }
 
+dbSysAddress.prototype.getEstados = function(callBack) {
+  const query = 'CALL sp_CONSULTA_ESTADOS(?, ?)';
+  this.dataBaseConnection.query(query, ['MINAS GERAIS', 0], callBack);
+}
+
 module.exports = function() {
   return dbSysAddress;
 }

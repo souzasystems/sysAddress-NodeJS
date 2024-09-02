@@ -1,16 +1,16 @@
-#paisesTable tbody tr {
+#condominiosTable tbody tr {
   width: 100%;
   border-collapse: collapse;
   line-height: 1;
   padding: 0.2rem;
 }
 
-#paisesTable th, #paisesTable td {
+#condominiosTable th, #condominiosTable td {
   padding: 0.2rem
   text-align: left;
 }
 
-#paisesTable tbody tr:hover {
+#condominiosTable tbody tr:hover {
   cursor: pointer;
   background-color: #e2e2e2;
 }
@@ -20,6 +20,6 @@
   text-align: center;
 }
 
-#idPais, #paisInativo, #sigla03, #numeroDDI {
+#idCondominio, #condominioInativo {
   text-align: center;
 }

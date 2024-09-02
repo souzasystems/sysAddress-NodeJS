@@ -24,15 +24,13 @@
             <tr>
               <th id="idPais" scope="col">CÓDIGO</th>
               <th scope="col">NOME</th>
-              <th id="sigla02" scope="col">SIGLA 02</th>
               <th id="sigla03" scope="col">SIGLA 03</th>
-              <th id="codigoISO" scope="col">CÓDIGO ISO 3166</th>
               <th id="numeroDDI" scope="col">NÚMERO DDI</th>
               <th id="paisInativo" scope="col">INATIVO</th>
               <th scope="col" class="acoes-col">AÇÕES</th>
             </tr>
           </thead>
-          <tbody id="tablePaises">
+          <tbody id="gridPaises">
             <!-- Os registros serão carregados aqui -->
           </tbody>
         </table>
@@ -49,6 +47,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="javascript/scriptsUtils.js"></script>
 <script src="javascript/scriptsPesquisaPaises.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const paises = <%- JSON.stringify(paises) %>;
+    loadTableData(paises);
+  });
+</script>
 
 </body>
 </html>
