@@ -21,7 +21,7 @@ body {
 }
 
 .background-image {
-  background-image: url("../imagens/background_cadastro.jpg");
+  background-image: url("../../imagens/background_cadastro.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

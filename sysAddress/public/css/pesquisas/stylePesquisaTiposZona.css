@@ -1,0 +1,25 @@
+#tiposZonaTable tbody tr {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 1;
+  padding: 0.2rem;
+}
+
+#tiposZonaTable th, #tiposZonaTable td {
+  padding: 0.2rem
+  text-align: left;
+}
+
+#tiposZonaTable tbody tr:hover {
+  cursor: pointer;
+  background-color: #e2e2e2;
+}
+
+.acoes-col {
+  width: 184px;
+  text-align: center;
+}
+
+#idTipoZona, #tipoZonaInativa {
+  text-align: center;
+}
