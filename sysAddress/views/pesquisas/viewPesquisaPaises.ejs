@@ -19,6 +19,11 @@
         </button>
       </div>
       <div class="modal-body">
+        <div id="nomePais">
+          <h6>INFORME O NOME DO PAÍS</h6>
+          <input type="text" id="inputNomePais" name="inputNomePais" class="form-control" placeholder="Digite o nome do país">
+        </div>
+
         <table class="table table-bordered table-hover table-striped" id="paisesTable">
           <thead class="thead-dark">
             <tr>
@@ -50,7 +55,11 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const paises = <%- JSON.stringify(paises) %>;
-    loadTableData(paises);
+
+    //if (paises !== null) {
+    //  carregaGridPaises(paises);
+    //}
+    console.log(paises);
   });
 </script>
 
