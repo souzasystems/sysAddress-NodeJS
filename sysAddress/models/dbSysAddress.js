@@ -27,9 +27,9 @@ dbSysAddress.prototype.getLogradouros = function(callBack) {
   this.dataBaseConnection.query(query, callBack);
 }
 
-dbSysAddress.prototype.getPaises = function(callBack) {
+dbSysAddress.prototype.getPaises = function(nomePais, callBack) {
   const query = 'CALL sp_CONSULTA_PAISES(?, ?)';
-  this.dataBaseConnection.query(query, ['BRASIL', 0], callBack);
+  this.dataBaseConnection.query(query, [nomePais + '%', 0], callBack);
 }
 
 dbSysAddress.prototype.getEstados = function(callBack) {

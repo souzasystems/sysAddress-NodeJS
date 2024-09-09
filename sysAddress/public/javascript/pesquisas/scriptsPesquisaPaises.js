@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
   $('#modalPaises').modal('show'); //Esse código é em jQuery.
 
@@ -9,7 +11,36 @@ $(document).ready(function() {
   });
 });
 
-function loadTableData(paises) {
+//Função que vai verificar se já foram digitados mais de três caracteres no edit
+document.getElementById('inputNomePais').addEventListener('input', function() {
+  const inputNomePais = document.getElementById('inputNomePais').value;
+  
+  if (inputNomePais.length >= 3) {
+    fetch('/consultaPaisesPorNome', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({inputNomePais: inputNomePais})
+    })
+    .then(response => {
+      console.log(response.url);
+      if (response.redirected) {
+        windows.location.href = response.url; //Redirecionar após a resposta
+      }
+    })
+    .catch(error => console.error('Houve um erro na consulta de países. Motivo: ' + error))
+  }
+});
+
+/*
+Explicação:
+- O evento input é acionado quando o usuário digita no campo de entrada.
+- Após o campo atingir 3 caracteres, a função fetch faz uma requisição POST para o endpoint /consultaPaisesPorNome.
+- Se a resposta resultar em redirecionamento, a página será redirecionada para a URL especificada na resposta.
+*/
+
+function carregaGridPaises(paises) {
   const tableBody = document.getElementById('gridPaises');
 
   paises.forEach(pais => {

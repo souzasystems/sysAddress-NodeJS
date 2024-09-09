@@ -1,3 +1,11 @@
+#nomePais {
+  margin-bottom: 10px;
+}
+
+#inputNomePais {
+  text-transform: uppercase;
+}
+
 #paisesTable tbody tr {
   width: 100%;
   border-collapse: collapse;
