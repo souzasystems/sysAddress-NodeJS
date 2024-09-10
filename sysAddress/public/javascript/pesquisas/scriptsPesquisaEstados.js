@@ -9,6 +9,46 @@ $(document).ready(function() {
   });
 });
 
+function consultaEstadoPorNome() {
+  const edtNomeEstado    = document.getElementById('edtNomeEstado').value;
+  const chkEstadoInativo = document.getElementById('chkEstadoInativo').checked;
+  const gridEstados      = document.getElementById('gridEstados');
+
+  function limpaGridEstados() {
+    gridEstados.innerHTML = '';
+  }
+  
+  if (edtNomeEstado.length >= 3) {
+    fetch('/consultaEstadosPorNome', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nomeEstado: edtNomeEstado, estadoInativo: chkEstadoInativo })
+    })
+    .then(response => response.json())
+    .then(estadosEncontrados => {
+      limpaGridEstados();
+      carregaGridEstados(estadosEncontrados);
+    })
+    .catch(error => {
+      console.error('Houve um erro na consulta de estados. Motivo: ' + error);
+    })
+  }
+  else {
+    limpaGridEstados();
+    return;
+  }
+}
+
+document.getElementById('edtNomeEstado').addEventListener('input', function() {
+  consultaEstadoPorNome();  
+});
+
+document.getElementById('chkEstadoInativo').addEventListener('click', function() {
+  consultaEstadoPorNome();
+})
+
 function carregaGridEstados(estados) {
   const gridEstados = document.getElementById('gridEstados');
 

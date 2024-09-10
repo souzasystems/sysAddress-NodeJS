@@ -27,14 +27,24 @@ dbSysAddress.prototype.getLogradouros = function(callBack) {
   this.dataBaseConnection.query(query, callBack);
 }
 
-dbSysAddress.prototype.getPaises = function(nomePais, callBack) {
+dbSysAddress.prototype.getPaises = function(nomePais, paisInativo, callBack) {
   const query = 'CALL sp_CONSULTA_PAISES(?, ?)';
-  this.dataBaseConnection.query(query, [nomePais + '%', 0], callBack);
+  this.dataBaseConnection.query(query, [nomePais + '%', paisInativo], callBack);
 }
 
-dbSysAddress.prototype.getEstados = function(callBack) {
+dbSysAddress.prototype.getEstados = function(nomeEstado, estadoInativo, callBack) {
   const query = 'CALL sp_CONSULTA_ESTADOS(?, ?)';
-  this.dataBaseConnection.query(query, ['MINAS GERAIS', 0], callBack);
+  this.dataBaseConnection.query(query, [nomeEstado + '%', estadoInativo], callBack);
+}
+
+dbSysAddress.prototype.getCidades = function(nomeCidade, cidadeInativa, callBack) {
+  const query = 'CALL sp_CONSULTA_CIDADES(?, ?)';
+  this.dataBaseConnection.query(query, [nomeCidade + '%', cidadeInativa], callBack);
+}
+
+dbSysAddress.prototype.getBairros = function(nomeBairro, bairroInativo, callBack) {
+  const query = 'CALL sp_CONSULTA_BAIRROS(?, ?)';
+  this.dataBaseConnection.query(query, [nomeBairro + '%', bairroInativo], callBack);
 }
 
 module.exports = function() {

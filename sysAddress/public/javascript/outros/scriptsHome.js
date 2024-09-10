@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log('Usuário encontrado');
                 alert('Login realizado com sucesso. Seja bem-vindo ' + username + '.');
                 window.location.href = '/TelaInicial';
-            } else {
+            }
+            else {
                 alert('O usuário ou a senha estão incorretos. Por favor, informe-os corretamente para realização de login.');
             }
         })
