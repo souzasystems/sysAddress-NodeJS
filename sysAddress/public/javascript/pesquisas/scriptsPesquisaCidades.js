@@ -9,6 +9,46 @@ $(document).ready(function() {
   });
 });
 
+function consultaCidadesPorNome() {
+  const edtNomeCidade    = document.getElementById('edtNomeCidade').value;
+  const chkCidadeInativa = document.getElementById('chkCidadeInativa').checked;
+  const gridCidades      = document.getElementById('gridCidades');
+
+  function limpaGridCidades() {
+    gridCidades.innerHTML = '';
+  }
+  
+  if (edtNomeCidade.length >= 3) {
+    fetch('/consultaCidadesPorNome', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nomeCidade: edtNomeCidade, cidadeInativa: chkCidadeInativa })
+    })
+    .then(response => response.json())
+    .then(cidadesEncontradas => {
+      limpaGridCidades();
+      carregaGridCidades(cidadesEncontradas);
+    })
+    .catch(error => {
+      console.error('Houve um erro na consulta de cidades. Motivo: ' + error);
+    })
+  }
+  else {
+    limpaGridCidades();
+    return;
+  }
+}
+
+document.getElementById('edtNomeCidade').addEventListener('input', function() {
+  consultaCidadesPorNome();  
+});
+
+document.getElementById('chkCidadeInativa').addEventListener('click', function() {
+  consultaCidadesPorNome();
+})
+
 function carregaGridCidades(cidades) {
   const gridCidades = document.getElementById('gridCidades');
 

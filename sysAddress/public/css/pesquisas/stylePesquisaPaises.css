@@ -1,8 +1,4 @@
-#nomePais {
-  margin-bottom: 10px;
-}
-
-#inputNomePais {
+#edtNomePais {
   text-transform: uppercase;
 }
 

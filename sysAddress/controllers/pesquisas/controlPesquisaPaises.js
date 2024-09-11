@@ -7,14 +7,10 @@ function consultaPaisesPorNome(application, require, response) {
     const connectionDB = application.config.dbConfig.dbConnection();
     const dbSysAddress = new application.sysAddress.models.dbSysAddress(connectionDB);
 
-    dbSysAddress.getPaises(dadosPais.inputNomePais, function(error, result) {
+    dbSysAddress.getPaises(dadosPais.nomePais, dadosPais.paisInativo, function(error, result) {
         let paisesEncontrados = result[0];
 
-        if (paisesEncontrados.length !== 0) {
-            response.render('pesquisas/viewPesquisaPaises', {paises: paisesEncontrados});
-        } else {
-            response.render('pesquisas/viewPesquisaPaises', {paises: null});
-        }
+        response.json(paisesEncontrados);
     });
 
     application.config.dbConfig.dbDisconnection(connectionDB);

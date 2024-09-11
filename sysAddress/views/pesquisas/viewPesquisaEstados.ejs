@@ -19,6 +19,19 @@
         </button>
       </div>
       <div class="modal-body">
+        <div id="nomeEstado" class="form-group row">
+          <div class="col-md-10">
+            <h6>INFORME O NOME DO ESTADO</h6>
+            <input type="text" id="edtNomeEstado" name="edtNomeEstado" class="form-control" placeholder="Digite o nome do estado" />
+          </div>
+          <div class="col-2 d-flex align-items-end">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="chkEstadoInativo" name="chkEstadoInativo">
+              <label class="form-check-label" for="chkEstadoInativo"><h6>INATIVO</h6></label>
+            </div>
+          </div>
+        </div>
+
         <table class="table table-bordered table-hover table-striped" id="estadosTable">
           <thead class="thead-dark">
             <tr>
@@ -47,11 +60,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="javascript/common/scriptsUtils.js"></script>
 <script src="javascript/pesquisas/scriptsPesquisaEstados.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const estados = <%- JSON.stringify(estados) %>;
-        carregaGridEstados(estados);
-    });
-</script>
+
 </body>
 </html>
