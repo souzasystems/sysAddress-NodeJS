@@ -9,6 +9,46 @@ $(document).ready(function() {
   });
 });
 
+function consultaBairrosPorNome() {
+  const edtNomeBairro    = document.getElementById('edtNomeBairro').value;
+  const chkBairroInativo = document.getElementById('chkBairroInativo').checked;
+  const gridBairros      = document.getElementById('gridBairros');
+
+  function limpaGridBairros() {
+    gridBairros.innerHTML = '';
+  }
+  
+  if (edtNomeBairro .length >= 3) {
+    fetch('/consultaBairrosPorNome', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nomeBairro: edtNomeBairro, bairroInativo: chkBairroInativo })
+    })
+    .then(response => response.json())
+    .then(bairrosEncontrados => {
+      limpaGridBairros();
+      carregaGridBairros(bairrosEncontrados);
+    })
+    .catch(error => {
+      console.error('Houve um erro na consulta de nomes de bairros. Motivo: ' + error);
+    })
+  }
+  else {
+    limpaGridBairros();
+    return;
+  }
+}
+
+document.getElementById('edtNomeBairro').addEventListener('input', function() {
+  consultaBairrosPorNome();  
+});
+
+document.getElementById('chkBairroInativo').addEventListener('click', function() {
+  consultaBairrosPorNome();
+})
+
 function carregaGridBairros(bairros) {
   const gridBairros = document.getElementById('gridBairros');
 
@@ -41,7 +81,7 @@ function carregaGridBairros(bairros) {
     
     row.appendChild(idCell);
     row.appendChild(nomeBairroCell);
-    row.appendChild(bairroCell);
+    row.appendChild(cidadeCell);
     row.appendChild(bairroInativo);
     row.appendChild(actionsCell);
 

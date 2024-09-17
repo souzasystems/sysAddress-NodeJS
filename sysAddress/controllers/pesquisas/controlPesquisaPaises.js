@@ -1,5 +1,5 @@
 function controlPesquisaPaises(application, request, response) {
-    response.render('pesquisas/viewPesquisaPaises', {paises: null});
+    response.render('pesquisas/viewPesquisaPaises');
 }
 
 function consultaPaisesPorNome(application, require, response) {

@@ -1,3 +1,7 @@
+#edtNomeBairro {
+  text-transform: uppercase;
+}
+
 #bairrosTable tbody tr {
   width: 100%;
   border-collapse: collapse;
