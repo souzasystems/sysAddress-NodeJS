@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,42 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/cadastros/styleCadastroTiposEndereco.css">
 </head>
+
 <body>
-    <!-- Modal -->
-    <div class="modal fade" data-backdrop="static" id="modalCadastroTipoEndereco" tabindex="-1" role="dialog" aria-labelledby="modalCadastroTipoEnderecoLabel" aria-hidden="true">
+    <div class="modal fade" data-backdrop="static" id="modalCadastroTipoEndereco" tabindex="-1" role="dialog"
+        aria-labelledby="modalCadastroTipoEnderecoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalCadastroTipoEnderecoLabel">TIPOS DE ENDEREÇO - INSERÇÃO</h5>
+                    <h5 class="modal-title" id="modalCadastroTipoEnderecoLabel">TIPOS DE ENDEREÇO - CONSULTA</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
                     <form id="formCadastroTipoEndereco" novalidate>
                         <div class="form-row">
                             <div class="form-group col-md-2">
-                                <label for="codigo">CÓDIGO</label>
-                                <input type="text" class="form-control" id="idTipoEndereco" name="codigo" maxlength="5" disabled>
+                                <label for="edtIdTipoEndereco">CÓDIGO</label>
+                                <input type="text" class="form-control" id="edtIdTipoEndereco" name="edtIdTipoEndereco"
+                                    maxlength="5" disabled>
                             </div>
                             <div class="form-group col-md-10">
-                                <label for="descricao">DESCRIÇÃO</label>
-                                <input type="text" class="form-control" id="descricao" name="descricao" maxlength="25">
+                                <label for="edtDescricaoTipoEndereco">DESCRIÇÃO</label>
+                                <input type="text" class="form-control" id="edtDescricaoTipoEndereco"
+                                    name="edtDescricaoTipoEndereco" maxlength="25" disabled>
                             </div>
                         </div>
                     </form>
                 </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
-                    <button type="button" class="btn btn-primary" id="salvarTipoEndereco">SALVAR</button>
+                    <button type="button" id="btnInserir" class="btn btn-info" data-dismiss="modal">INSERIR</button>
+                    <button type="button" id="btnAlterar" class="btn btn-info" data-dismiss="modal">ALTERAR</button>
+                    <button type="button" id="btnExcluir" class="btn btn-info" data-dismiss="modal">EXCLUIR</button>
+                    <button type="button" id="btnSalvar" class="btn btn-primary" id="salvarTipoEndereco"
+                        disabled>SALVAR</button>
                 </div>
             </div>
         </div>
@@ -43,6 +52,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="javascript/common/scriptsUtils.js"></script>
     <script src="javascript/cadastros/scriptsCadastroTiposEndereco.js"></script>
+    <script>
+        habilitaDesabilitaBotoes('A');
+        habilitaDesabilitaCampos('A')
+    </script>
 </body>
+
 </html>

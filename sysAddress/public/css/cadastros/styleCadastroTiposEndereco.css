@@ -8,3 +8,11 @@
     width: 100%;
     max-width: 300px;
 }
+
+#edtIdTipoEndereco {
+    text-align: center;
+}
+
+#edtIdTipoEndereco, #edtDescricaoTipoEndereco {
+    text-transform: uppercase;
+}

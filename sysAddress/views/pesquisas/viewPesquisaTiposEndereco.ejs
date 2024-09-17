@@ -27,7 +27,7 @@
               <th scope="col" class="acoes-col">AÇÕES</th>
             </tr>
           </thead>
-          <tbody id="tableBody">
+          <tbody id="gridTiposEndereco">
             <!-- Os registros serão carregados aqui -->
           </tbody>
         </table>
@@ -47,7 +47,8 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const tiposEndereco = <%- JSON.stringify(tiposEndereco) %>;
-    loadTableData(tiposEndereco);
+    
+    carregaGridTiposEndereco(tiposEndereco);
   });
 </script>
 
