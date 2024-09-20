@@ -11,8 +11,9 @@ function routeCadastroTiposEndereco(application) {
         application.sysAddress.controllers.cadastros.controlCadastroTiposEndereco.viewExcluiTipoEndereco(application, request, response, tipoEndereco, opcaoSel);
     });
 
-    application.get('/ConsultaTipoEndereco', function (request, response, tipoEndereco, opcaoSel) {
-        application.sysAddress.controllers.cadastros.controlCadastroTiposEndereco.viewConsultaTipoEndereco(application, request, response, tipoEndereco, opcaoSel);
+    application.get('/ConsultaTipoEndereco', function (request, response) {
+        console.log(request.query);
+        application.sysAddress.controllers.cadastros.controlCadastroTiposEndereco.viewConsultaTipoEndereco(application, request, response);
     });
 }
 
