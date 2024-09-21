@@ -1,4 +1,5 @@
 function controlPesquisaTiposEndereco(application, require, response) {
+    console.log('Olá');
     const connectionDB = application.config.dbConfig.dbConnection();
     const dbSysAddress = new application.sysAddress.models.dbSysAddress(connectionDB);
     

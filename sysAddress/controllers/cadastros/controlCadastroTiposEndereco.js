@@ -1,7 +1,8 @@
 function controlCadastroTiposEndereco(application, require, response) {
-    response.render('cadastros/viewCadastroTiposEndereco');
+    console.log('Hello');
+    response.render('cadastros/viewCadastroTiposEndereco', {}, 'C');
 }
 
 module.exports = {
-    viewCadastroTiposEndereco: controlCadastroTiposEndereco
+    viewConsultaTipoEndereco: controlCadastroTiposEndereco
 }
