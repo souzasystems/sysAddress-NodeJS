@@ -9,11 +9,32 @@ $(document).ready(function() {
   });
 });
 
+function consultaTipoEndereco(idTipoEndereco) {
+  console.log('Hello 2.');
+  
+  fetch(`/ConsultaTipoEndereco?idTipoEndereco=${idTipoEndereco}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => console.log('Houve um erro ao realizar a consulta do tipo de endereço selecionado. Motivo: ' + error));
+}
+
+document.querySelectorAll('#gridTiposEndereco tr').forEach(function(row) {
+  row.addEventListener('click', function() {
+    console.log('Hello.');
+    consultaTipoEndereco(this.getAttribute('data-code'));
+  });
+});
+
 function carregaGridTiposEndereco(tiposEndereco) {
   const gridTiposEndereco = document.getElementById('gridTiposEndereco');
 
   tiposEndereco.forEach(tipo => {
-    const row          = document.createElement('tr');
+    const row        = document.createElement('tr');    
+    row.dataset.code = tipo.ID_TIPO_ENDERECO;
+    //row.setAttribute('data-code', tipo.ID_TIPO_ENDERECO); Outra forma de inserir o data-code
+
     const idCell       = document.createElement('td');
     idCell.textContent = strZeros(tipo.ID_TIPO_ENDERECO, 3);
     idCell.id          = 'idTipoEndereco';
