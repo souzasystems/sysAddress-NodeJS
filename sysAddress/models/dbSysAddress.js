@@ -12,6 +12,11 @@ dbSysAddress.prototype.getTiposEndereco = function(callBack) {
     this.dataBaseConnection.query(query, callBack);
 }
 
+dbSysAddress.prototype.getTipoEndereco = function(idTipoEndereco, callBack) {
+  const query = 'CALL sp_CONSULTA_TIPO_ENDERECO(?)';
+  this.dataBaseConnection.query(query, [idTipoEndereco], callBack);
+}
+
 dbSysAddress.prototype.getTiposTelefone = function(callBack) {
   const query = 'CALL sp_CONSULTA_TIPOS_TELEFONE';
   this.dataBaseConnection.query(query, callBack);

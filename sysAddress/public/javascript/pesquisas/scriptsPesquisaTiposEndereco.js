@@ -9,22 +9,24 @@ $(document).ready(function() {
   });
 });
 
-function consultaTipoEndereco(idTipoEndereco) {
-  console.log('Hello 2.');
-  
-  fetch(`/ConsultaTipoEndereco?idTipoEndereco=${idTipoEndereco}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-        })
-        .catch(error => console.log('Houve um erro ao realizar a consulta do tipo de endereço selecionado. Motivo: ' + error));
-}
+function insereTipoEndereco() {
+  window.location.href = "/InsereTipoEndereco";
+};
 
-document.querySelectorAll('#gridTiposEndereco tr').forEach(function(row) {
-  row.addEventListener('click', function() {
-    console.log('Hello.');
-    consultaTipoEndereco(this.getAttribute('data-code'));
-  });
+function alteraTipoEndereco(idTipoEndereco) {
+  window.location.href = `/AlteraTipoEndereco?idTipoEndereco=${idTipoEndereco}`;
+};
+
+function excluiTipoEndereco(idTipoEndereco) {
+  window.location.href = `/ExcluiTipoEndereco?idTipoEndereco=${idTipoEndereco}`;
+};
+
+function consultaTipoEndereco(idTipoEndereco) { 
+  window.location.href = `/ConsultaTipoEndereco?idTipoEndereco=${idTipoEndereco}`;
+};
+
+document.getElementById('btnInsereTipoEndereco').addEventListener('click', function() {
+  insereTipoEndereco();
 });
 
 function carregaGridTiposEndereco(tiposEndereco) {
@@ -47,8 +49,8 @@ function carregaGridTiposEndereco(tiposEndereco) {
     const actionsCell     = document.createElement('td');
     actionsCell.className = 'acoes-col';
     actionsCell.innerHTML = `
-        <button type="button" class="btn btn-secondary btn-sm alterarBtn">ALTERAR</button>
-        <button type="button" class="btn btn-danger btn-sm excluirBtn">EXCLUIR</button>
+        <button type="button" class="btn btn-secondary btn-sm btnAlterar">ALTERAR</button>
+        <button type="button" class="btn btn-danger btn-sm btnExcluir">EXCLUIR</button>
       `;
     
     row.appendChild(idCell);
@@ -57,4 +59,45 @@ function carregaGridTiposEndereco(tiposEndereco) {
 
     gridTiposEndereco.appendChild(row);
   });
+};
+
+function adicionaRotasBotoes() {
+  const buttonsEdit   = document.getElementsByClassName('btnAlterar');
+  const buttonsDelete = document.getElementsByClassName('btnExcluir');
+  
+  for (let x = 0; x < buttonsEdit.length; x++) {
+    buttonsEdit[x].addEventListener('click', function() {
+      alert('Você clicou no botão alterar');
+    });
+  };
+
+  for (let x = 0; x < buttonsDelete.length; x++) {
+    buttonsDelete[x].addEventListener('click', function() {
+      alert('Você clicou no botão de excluir');
+    });
+  };
+};
+
+function adicionaRotasGrid() {
+  document.querySelectorAll('#gridTiposEndereco tr').forEach(function(row) {
+    row.addEventListener('click', function() {
+      if (event.target.tagName === 'TD') {
+        const indexCol = event.target.cellIndex;
+
+        if ((indexCol === 0) || (indexCol === 1)) {
+          consultaTipoEndereco(this.getAttribute('data-code'));
+        }
+      }
+    });
+  });
 }
+
+/*
+function consultaTipoEndereco(idTipoEndereco) { 
+    fetch(`/ConsultaTipoEndereco?idTipoEndereco=${idTipoEndereco}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => console.log('Houve um erro ao realizar a consulta do tipo de endereço selecionado. Motivo: ' + error));
+*/

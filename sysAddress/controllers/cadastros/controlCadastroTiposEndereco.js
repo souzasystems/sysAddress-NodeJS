@@ -1,17 +1,48 @@
-function controlCadastroTiposEndereco(application, require, response) {
-<<<<<<< HEAD
-    console.log('Hello');
-    response.render('cadastros/viewCadastroTiposEndereco', {}, 'C');
+function realizaInsercaoTipoEndereco(application, request, response) {
+    let dadosTipoEndereco = {
+        tipoEndereco: null,
+        opcaoSel: 'I'
+    };
+    
+    response.render('cadastros/viewCadastroTiposEndereco', { dadosTipoEndereco: dadosTipoEndereco });
+}
+
+function realizaAlteracaoTipoEndereco(application, request, response) {
+    const dadosTipoEndereco = request.query;
+    const connectionDB      = application.config.dbConfig.dbConnection();
+    const dbSysAddress      = new application.sysAddress.models.dbSysAddress(connectionDB);
+
+    dbSysAddress.getTipoEndereco(dadosTipoEndereco.idTipoEndereco, function(error, result) {
+        let dadosTipoEndereco = {
+            tipoEndereco: result[0],
+            opcaoSel: 'A'
+        };
+        
+        response.render('cadastros/viewCadastroTiposEndereco', { dadosTipoEndereco: dadosTipoEndereco });
+    });
+
+    application.config.dbConfig.dbDisconnection(connectionDB);
+}
+
+function realizaConsultaTipoEndereco(application, request, response) {
+    const dadosTipoEndereco = request.query;
+    const connectionDB      = application.config.dbConfig.dbConnection();
+    const dbSysAddress      = new application.sysAddress.models.dbSysAddress(connectionDB);
+
+    dbSysAddress.getTipoEndereco(dadosTipoEndereco.idTipoEndereco, function(error, result) {
+        let dadosTipoEndereco = {
+            tipoEndereco: result[0],
+            opcaoSel: 'C'
+        };
+        
+        response.render('cadastros/viewCadastroTiposEndereco', { dadosTipoEndereco: dadosTipoEndereco });
+    });
+
+    application.config.dbConfig.dbDisconnection(connectionDB);
 }
 
 module.exports = {
-=======
-    console.log(require.query);
-    response.render('cadastros/viewCadastroTiposEndereco');
-}
-
-module.exports = {
-    //viewCadastroTiposEndereco: controlCadastroTiposEndereco
->>>>>>> d5f51c4464128e656224b23b80068f7785e08afa
-    viewConsultaTipoEndereco: controlCadastroTiposEndereco
+    viewInsereTipoEndereco: realizaInsercaoTipoEndereco,
+    viewAlteracaoTipoEndereco: realizaAlteracaoTipoEndereco,
+    viewConsultaTipoEndereco: realizaConsultaTipoEndereco    
 }

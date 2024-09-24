@@ -33,7 +33,7 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">INSERIR TIPO DE ENDEREÇO</button>
+        <button type="button" class="btn btn-primary" id="btnInsereTipoEndereco">INSERIR TIPO DE ENDEREÇO</button>
       </div>
     </div>
   </div>
@@ -49,6 +49,8 @@
     const tiposEndereco = <%- JSON.stringify(tiposEndereco) %>;
     
     carregaGridTiposEndereco(tiposEndereco);
+    adicionaRotasBotoes();
+    adicionaRotasGrid();
   });
 </script>
 
