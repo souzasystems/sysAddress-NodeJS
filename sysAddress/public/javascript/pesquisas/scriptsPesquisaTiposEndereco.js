@@ -32,25 +32,25 @@ document.getElementById('btnInsereTipoEndereco').addEventListener('click', funct
 function carregaGridTiposEndereco(tiposEndereco) {
   const gridTiposEndereco = document.getElementById('gridTiposEndereco');
 
-  tiposEndereco.forEach(tipo => {
+  tiposEndereco.forEach(tipoEndereco => {
     const row        = document.createElement('tr');    
-    row.dataset.code = tipo.ID_TIPO_ENDERECO;
+    row.dataset.code = tipoEndereco.ID_TIPO_ENDERECO;
     //row.setAttribute('data-code', tipo.ID_TIPO_ENDERECO); Outra forma de inserir o data-code
 
     const idCell       = document.createElement('td');
-    idCell.textContent = strZeros(tipo.ID_TIPO_ENDERECO, 3);
+    idCell.textContent = strZeros(tipoEndereco.ID_TIPO_ENDERECO, 3);
     idCell.id          = 'idTipoEndereco';
     idCell.className   = 'align-middle';
     
     const descricaoCell       = document.createElement('td');
-    descricaoCell.textContent = tipo.DESCRICAO_TIPO_ENDERECO;
+    descricaoCell.textContent = tipoEndereco.DESCRICAO_TIPO_ENDERECO;
     descricaoCell.className   = 'align-middle';
     
     const actionsCell     = document.createElement('td');
     actionsCell.className = 'acoes-col';
     actionsCell.innerHTML = `
-        <button type="button" class="btn btn-secondary btn-sm btnAlterar">ALTERAR</button>
-        <button type="button" class="btn btn-danger btn-sm btnExcluir">EXCLUIR</button>
+        <button type="button" class="btn btn-secondary btn-sm btnAlterar" data-id=${tipoEndereco.ID_TIPO_ENDERECO}>ALTERAR</button>
+        <button type="button" class="btn btn-danger btn-sm btnExcluir" data-id=${tipoEndereco.ID_TIPO_ENDERECO}>EXCLUIR</button>
       `;
     
     row.appendChild(idCell);
@@ -66,14 +66,14 @@ function adicionaRotasBotoes() {
   const buttonsDelete = document.getElementsByClassName('btnExcluir');
   
   for (let x = 0; x < buttonsEdit.length; x++) {
-    buttonsEdit[x].addEventListener('click', function() {
-      alert('Você clicou no botão alterar');
+    buttonsEdit[x].addEventListener('click', function() {      
+      alteraTipoEndereco(this.getAttribute('data-id'));
     });
   };
 
   for (let x = 0; x < buttonsDelete.length; x++) {
     buttonsDelete[x].addEventListener('click', function() {
-      alert('Você clicou no botão de excluir');
+      excluiTipoEndereco(this.getAttribute('data-id'));
     });
   };
 };

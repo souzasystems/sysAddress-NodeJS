@@ -17,6 +17,11 @@ dbSysAddress.prototype.getTipoEndereco = function(idTipoEndereco, callBack) {
   this.dataBaseConnection.query(query, [idTipoEndereco], callBack);
 }
 
+dbSysAddress.prototype.excluiTipoEndereco = function(idTipoEndereco, idLogUsuario, motivoExclusao, callBack) {
+  const query = 'CALL sp_EXCLUI_TIPO_ENDERECO(?, ?, ?)';
+  this.dataBaseConnection.query(query, [idTipoEndereco, idLogUsuario, motivoExclusao], callBack);
+}
+
 dbSysAddress.prototype.getTiposTelefone = function(callBack) {
   const query = 'CALL sp_CONSULTA_TIPOS_TELEFONE';
   this.dataBaseConnection.query(query, callBack);

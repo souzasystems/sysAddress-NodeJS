@@ -65,10 +65,11 @@
                 $('#modalCadastroTipoEndereco').on('shown.bs.modal', function () {
                     document.getElementById('edtDescricaoTipoEndereco').focus();
                 });
-            }
-            else if ((dadosTipoEndereco.opcaoSel = 'A') || (dadosTipoEndereco.opcaoSel = 'C')) {
+            };
+            
+            if ((dadosTipoEndereco.opcaoSel = 'A') || (dadosTipoEndereco.opcaoSel = 'C')) {
                 carregaDados(dadosTipoEndereco.tipoEndereco);
-            }
+            };
         });
     </script>
 </body>
