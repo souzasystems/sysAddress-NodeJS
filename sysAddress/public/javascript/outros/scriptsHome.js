@@ -1,16 +1,40 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("loginForm");
+function validateForm(username, password) {
+    if (username.trim() === '') {
+        alert('O usuário não pode ficar em branco. Por favor, informe-o para realizar o login.');
+        return false;
+    }
+    
+    if (password.trim() === '') {
+        alert('A senha não pode ficar em branco. Por favor, informe-a para realizar o login.');
+        return false;
+    }
+    
+    return true;
+}
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+document.getElementById('btnRealizaLogin').addEventListener('click', function() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
+    if (!validateForm(username, password)) {
+        return; // Se a validação falhar, não prosseguir
+    }
 
-        if (!validateForm(username, password)) {
-            return; // Se a validação falhar, não prosseguir
-        }
+    fetch(`/validarUsuarioSenha?nomeUsuario=${username}&senha=${password}`)
+        .then(response => response.json())
+        .then(userSenhaInfos => {
+            if (userSenhaInfos.usuarioEncontrado) {
+                alert('Seja bem-vindo ' + (userSenhaInfos.username).toUpperCase() + '.')
+                window.location.href = '/TelaInicial';
+            }
+            else {
+                alert('O usuário ou a senha informados não estão cadastrados.');
+            }
+        })
+        .catch(error => console.error('Houve um erro ao validar o usuário e a senha. Motivo: ' + error));
+});
 
+/*
         fetch('/validarUsuarioSenha', {
             method: 'POST',
             headers: {
@@ -32,19 +56,4 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error('Houve um erro ao validar o usuário e a senha no banco de dados. Motivo: ', error);
         });
-    });
-
-    function validateForm(username, password) {
-        if (username.trim() === '') {
-            alert('O usuário não pode ficar em branco. Por favor, informe-o para realizar o login.');
-            return false;
-        }
-
-        if (password.trim() === '') {
-            alert('A senha não pode ficar em branco. Por favor, informe-a para realizar o login.');
-            return false;
-        }
-
-        return true;
-    }
-});
+*/

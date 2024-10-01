@@ -1,6 +1,6 @@
 /* Estilos para telas maiores */
 body {
-  background-image: url("../imagens/background_login.jpg");
+  background-image: url("../../imagens/background_login.jpg");
   background-color: rgba(255, 255, 255, 0.1); /* Cor de fundo com transparência */
   background-blend-mode: lighten; /* Aplicando blend mode para clarear a imagem de fundo */
   background-size: cover;

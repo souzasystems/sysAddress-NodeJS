@@ -1,3 +1,5 @@
+const { error } = require("toastr");
+
 function dbSysAddress (connectionDB) {
   this.dataBaseConnection = connectionDB;
 }
@@ -15,6 +17,20 @@ dbSysAddress.prototype.getTiposEndereco = function(callBack) {
 dbSysAddress.prototype.getTipoEndereco = function(idTipoEndereco, callBack) {
   const query = 'CALL sp_CONSULTA_TIPO_ENDERECO(?)';
   this.dataBaseConnection.query(query, [idTipoEndereco], callBack);
+}
+
+dbSysAddress.prototype.insereTipoEndereco = function (descricaoTipoEndereco, logIdUsuario, callBack) {
+  const query = `CALL sp_INSERE_TIPO_ENDERECO(?, ?, @p_ID_TIPO_ENDERECO);
+                 SELECT @p_ID_TIPO_ENDERECO AS idTipoEndereco`;
+  this.dataBaseConnection.query(query, [descricaoTipoEndereco, logIdUsuario], callBack);
+
+  //if (error) {
+  //  console.log('Erro: ' + error);
+  //  return callBack(error);
+  //}
+
+  const idTipoEndereco = results[1][0].idTipoEndereco;
+  callBack(null, idTipoEndereco);
 }
 
 dbSysAddress.prototype.excluiTipoEndereco = function(idTipoEndereco, idLogUsuario, motivoExclusao, callBack) {

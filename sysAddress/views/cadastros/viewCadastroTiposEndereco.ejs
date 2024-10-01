@@ -52,10 +52,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="javascript/common/scriptsUtils.js"></script>
     <script src="javascript/cadastros/scriptsCadastroTiposEndereco.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const dadosTipoEndereco = <%- JSON.stringify(dadosTipoEndereco) %>;
 
             habilitaDesabilitaBotoes(dadosTipoEndereco.opcaoSel);
@@ -66,8 +67,8 @@
                     document.getElementById('edtDescricaoTipoEndereco').focus();
                 });
             };
-            
-            if ((dadosTipoEndereco.opcaoSel = 'A') || (dadosTipoEndereco.opcaoSel = 'C')) {
+
+            if ((dadosTipoEndereco.opcaoSel === 'A') || (dadosTipoEndereco.opcaoSel === 'C')) {
                 carregaDados(dadosTipoEndereco.tipoEndereco);
             };
         });

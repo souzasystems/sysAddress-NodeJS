@@ -30,3 +30,63 @@ function carregaDados(tipoEndereco) {
   document.getElementById('edtIdTipoEndereco').value        = strZeros(tipoEndereco[0].ID_TIPO_ENDERECO, 3);
   document.getElementById('edtDescricaoTipoEndereco').value = tipoEndereco[0].DESCRICAO_TIPO_ENDERECO;
 }
+
+function validaDados() {
+  const descricaoTipoEndereco = document.getElementById('edtDescricaoTipoEndereco').value;
+
+  if (descricaoTipoEndereco === '') {
+    Swal.fire({
+      position: "center",
+      icon: "info",
+      title: "A descrição do tipo de endereço não pode ficar em branco!",
+      showConfirmButton: true,
+      width: "500px"
+    });
+        
+    return false;
+  }
+}
+
+document.getElementById('btnSalvar').addEventListener('click', function () {
+  validaDados();
+
+  fetch('/RealizaInsercaoTipoEndereco', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      descricaoTipoEndereco: document.getElementById('edtDescricaoTipoEndereco').value,
+      logIdUsuario: 1
+    })
+  })
+  .then(response => {
+    if (!(response.ok)) {
+      return response.json().then(error => {
+        throw new Error(error.message);
+      });
+    }
+    
+    return response.json();
+  })
+  .then(dados => {
+    Swal.fire({
+        title: "Registro inserido!",
+        text: dados.message,
+        icon: "success",
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        // Verifica se o botão "OK" foi clicado
+        if (result.isConfirmed) {
+            window.location.href = '/PesquisaTiposEndereco';
+        }
+      });
+    })
+  .catch(error => {
+    Swal.fire({
+      title: "Erro!",
+      text: error.message,
+      icon: "error"
+    });
+  });
+})

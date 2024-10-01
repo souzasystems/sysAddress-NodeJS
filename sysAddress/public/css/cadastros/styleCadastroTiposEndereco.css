@@ -1,14 +1,3 @@
-.form-control#codigo {
-    width: 100%;
-    max-width: 80px;
-    text-align: center; /* Centraliza o texto no campo código */
-}
-
-.form-control#descricao {
-    width: 100%;
-    max-width: 300px;
-}
-
 #edtIdTipoEndereco {
     text-align: center;
 }
@@ -16,3 +5,4 @@
 #edtIdTipoEndereco, #edtDescricaoTipoEndereco {
     text-transform: uppercase;
 }
+

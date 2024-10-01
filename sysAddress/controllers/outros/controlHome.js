@@ -1,17 +1,17 @@
-function controlHome(application, require, response) {
+function controlHome(application, request, response) {
     response.render('outros/viewHome', { userSenhaInfos: {} });
 }
 
-function validaUsuarioSenha(application, require, response) {
-    const dadosUserSenha = require.body;
-    const connectionDB   = application.config.dbConnection();
-    const dbSysAddress   = new application.sysAddress.models.dbSysAddress(connectionDB);
+function validaUsuarioSenha(application, request, response) {
+    const dadosUserSenha = request.query;
+    const connectionDB = application.config.dbConfig.dbConnection();
+    const dbSysAddress = new application.sysAddress.models.dbSysAddress(connectionDB);    
 
-    dbSysAddress.getUsuarioByNome(dadosUserSenha.username, dadosUserSenha.password, function(error, result) {
+    dbSysAddress.getUsuarioByNome(dadosUserSenha.nomeUsuario, dadosUserSenha.senha, function(error, result) {
         let userSenhaInfos = {
             usuarioEncontrado: result[0].length !== 0,
-            username: dadosUserSenha.username,
-            password: dadosUserSenha.password
+            username: dadosUserSenha.nomeUsuario,
+            password: dadosUserSenha.senha
         };
 
         response.json(userSenhaInfos);
