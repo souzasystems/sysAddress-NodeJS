@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $('#modalCadastroTipoEndereco').modal('show'); 
+  $('#modalCadastroTipoEndereco').modal('show');
 
   // Redirecionar para /PesquisaTiposEndereo ao fechar o modal
   $('#modalCadastroTipoEndereco').on('hide.bs.modal', function (event) {
@@ -13,22 +13,22 @@ function habilitaDesabilitaCampos(opcaoSel) {
   switch (opcaoSel) {
     case 'I':
       document.getElementById('modalCadastroTipoEnderecoLabel').textContent = 'TIPOS DE ENDEREÇO - INSERÇÃO';
-      document.getElementById('edtDescricaoTipoEndereco').disabled          = false;
+      document.getElementById('edtDescricaoTipoEndereco').disabled = false;
       break;
     case 'A':
       document.getElementById('modalCadastroTipoEnderecoLabel').textContent = 'TIPOS DE ENDEREÇO - ALTERAÇÃO';
-      document.getElementById('edtDescricaoTipoEndereco').disabled          = false;
+      document.getElementById('edtDescricaoTipoEndereco').disabled = false;
       break;
     case 'C':
       document.getElementById('modalCadastroTipoEnderecoLabel').textContent = 'TIPOS DE ENDEREÇO - CONSULTA';
-      document.getElementById('edtDescricaoTipoEndereco').disabled          = true;
+      document.getElementById('edtDescricaoTipoEndereco').disabled = true;
       break;
   }
 }
 
 function carregaDados(tipoEndereco) {
-  document.getElementById('edtIdTipoEndereco').value        = strZeros(tipoEndereco[0].ID_TIPO_ENDERECO, 3);
-  document.getElementById('edtDescricaoTipoEndereco').value = tipoEndereco[0].DESCRICAO_TIPO_ENDERECO;
+  document.getElementById('edtIdTipoEndereco').value = strZeros(tipoEndereco.idTipoEndereco, 3);
+  document.getElementById('edtDescricaoTipoEndereco').value = tipoEndereco.descricaoTipoEndereco;
 }
 
 function validaDados() {
@@ -42,7 +42,7 @@ function validaDados() {
       showConfirmButton: true,
       width: "500px"
     });
-        
+
     return false;
   }
 }
@@ -50,43 +50,87 @@ function validaDados() {
 document.getElementById('btnSalvar').addEventListener('click', function () {
   validaDados();
 
-  fetch('/RealizaInsercaoTipoEndereco', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      descricaoTipoEndereco: document.getElementById('edtDescricaoTipoEndereco').value,
-      logIdUsuario: 1
-    })
-  })
-  .then(response => {
-    if (!(response.ok)) {
-      return response.json().then(error => {
-        throw new Error(error.message);
+  if (opcaoSel == 'I') {
+    fetch('/RealizaInsercaoTipoEndereco', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          descricaoTipoEndereco: (document.getElementById('edtDescricaoTipoEndereco').value).toUpperCase(),
+          logIdUsuario: 1
+        })
+      })
+      .then(response => {
+        if (!(response.ok)) {
+          return response.json().then(error => {
+            throw new Error(error.message);
+          });
+        }
+
+        return response.json();
+      })
+      .then(dados => {
+        Swal.fire({
+          title: "Registro inserido!",
+          text: dados.message,
+          icon: "success",
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          // Verifica se o botão "OK" foi clicado
+          if (result.isConfirmed) {
+            window.location.href = '/PesquisaTiposEndereco';
+          }
+        });
+      })
+      .catch(error => {
+        Swal.fire({
+          title: "Erro!",
+          text: error.message,
+          icon: "error"
+        });
       });
-    }
-    
-    return response.json();
-  })
-  .then(dados => {
-    Swal.fire({
-        title: "Registro inserido!",
+  }
+  else if (opcaoSel == 'A') {
+    fetch('/RealizaAlteracaoTipoEndereco', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        idTipoEndereco: parseInt(document.getElementById('edtIdTipoEndereco').value),
+        descricaoTipoEndereco: (document.getElementById('edtDescricaoTipoEndereco').value).toUpperCase(),
+        logIdUsuario: 1
+      })
+    })
+    .then(response => {
+      if (!(response.ok)) {
+        return response.json().then(error => {
+          throw new Error(error.message);
+        });
+      }
+
+      return response.json();
+    })
+    .then(dados => {
+      Swal.fire({
+        title: "Alteração realizada!",
         text: dados.message,
         icon: "success",
         confirmButtonText: 'OK'
       }).then((result) => {
         // Verifica se o botão "OK" foi clicado
         if (result.isConfirmed) {
-            window.location.href = '/PesquisaTiposEndereco';
+          window.location.href = '/PesquisaTiposEndereco';
         }
       });
     })
-  .catch(error => {
-    Swal.fire({
-      title: "Erro!",
-      text: error.message,
-      icon: "error"
-    });
-  });
-})
+    .catch(error => {
+      Swal.fire({
+        title: "Erro!",
+        text: error.message,
+        icon: "error"
+      });
+    });    
+  }
+});

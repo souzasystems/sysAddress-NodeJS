@@ -14,7 +14,7 @@ function insereTipoEndereco() {
 };
 
 function alteraTipoEndereco(idTipoEndereco, opcaoSel) {
-  window.location.href = `/ConsultaTipoEndereco?idTipoEndereco=${idTipoEndereco}&opcaoSel=${opcaoSel}`;
+  consultaTipoEndereco(idTipoEndereco, opcaoSel);
 };
 
 function excluiTipoEndereco(idTipoEndereco, descricaoTipoEndereco) {
@@ -70,7 +70,26 @@ function excluiTipoEndereco(idTipoEndereco, descricaoTipoEndereco) {
 };
 
 function consultaTipoEndereco(idTipoEndereco, opcaoSel) {
-  window.location.href = `/ConsultaTipoEndereco?idTipoEndereco=${idTipoEndereco}&opcaoSel=${opcaoSel}`;
+  fetch(`/ConsultaTipoEndereco?idTipoEndereco=${idTipoEndereco}&opcaoSel=${opcaoSel}`)
+  .then(response => {
+    if (!(response.ok)) {
+      return response.json().then(error => {
+        throw new Error(error.message);
+      });
+    }
+    
+    return response.json();
+  })
+  .then(dadosTipoEndereco => {
+    const queryString = new URLSearchParams({
+      idTipoEndereco: dadosTipoEndereco.tipoEndereco[0].ID_TIPO_ENDERECO,
+      descricaoTipoEndereco: dadosTipoEndereco.tipoEndereco[0].DESCRICAO_TIPO_ENDERECO,
+      opcaoSel: dadosTipoEndereco.opcaoSel
+    }).toString();
+
+    window.location.href = `/AbreConsultaTipoEndereco?${queryString}`; 
+  })
+  .catch(error => console.error('Houve um erro ao realizar a consulta do tipo de endereço. Motivo: ' + error));
 };
 
 document.getElementById('btnInsereTipoEndereco').addEventListener('click', function () {

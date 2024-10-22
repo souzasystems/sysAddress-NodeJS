@@ -56,20 +56,23 @@
     <script src="javascript/common/scriptsUtils.js"></script>
     <script src="javascript/cadastros/scriptsCadastroTiposEndereco.js"></script>
     <script>
+        let opcaoSel;
+        
         document.addEventListener('DOMContentLoaded', function () {
             const dadosTipoEndereco = <%- JSON.stringify(dadosTipoEndereco) %>;
+            opcaoSel                = dadosTipoEndereco.opcaoSel;
 
-            habilitaDesabilitaBotoes(dadosTipoEndereco.opcaoSel);
-            habilitaDesabilitaCampos(dadosTipoEndereco.opcaoSel);
+            habilitaDesabilitaBotoes(opcaoSel);
+            habilitaDesabilitaCampos(opcaoSel);
 
-            if ((dadosTipoEndereco.opcaoSel === 'I') || (dadosTipoEndereco.opcaoSel === 'A')) {
+            if ((opcaoSel === 'I') || (opcaoSel === 'A')) {
                 $('#modalCadastroTipoEndereco').on('shown.bs.modal', function () {
                     document.getElementById('edtDescricaoTipoEndereco').focus();
                 });
             };
 
-            if ((dadosTipoEndereco.opcaoSel === 'A') || (dadosTipoEndereco.opcaoSel === 'C')) {
-                carregaDados(dadosTipoEndereco.tipoEndereco);
+            if ((opcaoSel === 'A') || (opcaoSel === 'C')) {
+                carregaDados(dadosTipoEndereco);
             };
         });
     </script>
