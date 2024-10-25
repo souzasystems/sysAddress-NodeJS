@@ -1,0 +1,8 @@
+#edtIdCidade, #edtIdBairro, #edtDataVigoracao {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#lblNomeCidade {
+    color: white;    
+}

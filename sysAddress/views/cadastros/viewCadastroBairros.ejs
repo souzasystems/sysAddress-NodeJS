@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bairros</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cadastros/styleCadastroBairros.css">
 </head>
+
 <body>
-    <h1>Olá, eu sou a view de cadastro de bairros.</h1>    
+    <div class="modal fade" data-backdrop="static" id="modalCadastroBairro" tabindex="-1" role="dialog"
+        aria-labelledby="modalCadastroBairroLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCadastroBairroLabel">BAIRRO - CONSULTA</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="formCadastroBairro" novalidate>
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="edtIdBairro">CÓDIGO</label>
+                                <input type="text" class="form-control" id="edtIdBairro" name="edtIdBairro"
+                                    maxlength="5" disabled>
+                            </div>
+                            <div class="form-group col-md-7">
+                                <label for="edtNomeBairro">DESCRIÇÃO</label>
+                                <input type="text" class="form-control" id="edtNomeBairro"
+                                    name="edtNomeBairro" maxlength="70" disabled>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="edtDataVigoracao">DATA VIGORAÇÃO</label>
+                                <input type="date" class="form-control" id="edtDataVigoracao" name="edtDataVigoracao" disabled>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="edtIdCidade">CIDADE</label>
+                                <input type="text" class="form-control" id="edtIdCidade" name="edtIdCidade"
+                                    maxlength="5" disabled>
+                            </div>
+                            <div class="form-group col-md-10">
+                                <label for="edtNomeCidade" id="lblNomeCidade">CIDADE</label>
+                                <input type="text" class="form-control" id="edtNomeCidade"
+                                    name="edtNomeCidade" maxlength="45" disabled>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="btnInserir" class="btn btn-info" data-dismiss="modal">INSERIR</button>
+                    <button type="button" id="btnAlterar" class="btn btn-info" data-dismiss="modal">ALTERAR</button>
+                    <button type="button" id="btnExcluir" class="btn btn-info" data-dismiss="modal">EXCLUIR</button>
+                    <button type="button" id="btnSalvar" class="btn btn-primary" id="salvarTipoEndereco"
+                        disabled>SALVAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="javascript/common/scriptsUtils.js"></script>
+    <script src="javascript/cadastros/scriptsCadastroBairros.js"></script>
 </body>
+
 </html>

@@ -35,7 +35,8 @@ dbSysAddress.prototype.insereTipoEndereco = function (descricaoTipoEndereco, log
       if (result[0].idTipoEndereco != null && result[0].idTipoEndereco !== undefined) {
         const idTipoEndereco = result[0].idTipoEndereco;
         callBack(null, idTipoEndereco);
-      } else {
+      }
+      else {
         callBack(new Error('Houve um erro ao obter o código do tipo de endereço gerado.'));
       }
     });

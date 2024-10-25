@@ -1,8 +1,8 @@
 #edtIdTipoEndereco {
-    text-align: center;
+  text-align: center;
 }
 
-#edtIdTipoEndereco, #edtDescricaoTipoEndereco {
-    text-transform: uppercase;
+#edtIdTipoEndereco,
+#edtDescricaoTipoEndereco {
+  text-transform: uppercase;
 }
-

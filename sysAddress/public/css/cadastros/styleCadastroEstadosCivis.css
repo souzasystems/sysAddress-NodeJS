@@ -1,0 +1,8 @@
+#edtIdEstadoCivil {
+  text-align: center;
+}
+
+#edtIdEstadoCivil,
+#edtDescricaoEstadoCivil {
+  text-transform: uppercase;
+}
