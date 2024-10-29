@@ -61,7 +61,7 @@
         document.addEventListener('DOMContentLoaded', function () {                  
           const dadosEstadoCivil = <%- JSON.stringify(dadosEstadoCivil) %>;
           opcaoSel               = dadosEstadoCivil.opcaoSel;
-          console.log(dadosEstadoCivil);
+
           habilitaDesabilitaBotoes(opcaoSel);
           habilitaDesabilitaCampos(opcaoSel);
 
@@ -72,7 +72,7 @@
           };
 
           if ((opcaoSel === 'A') || (opcaoSel === 'C')) {
-            carregaDados(dadosEstadoCivil);
+            carregaDados(dadosEstadoCivil.estadoCivil[0]);
           };
         });
     </script>

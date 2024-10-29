@@ -8,16 +8,15 @@ function abreModalInsercaoEstadoCivil(application, request, response) {
 }
 
 function abreModalConsultaEstadoCivil(application, request, response) {
+  const estadoCivil = JSON.parse(decodeURIComponent(request.query.estadoCivil));
+  const opcaoSel    = request.query.opcaoSel;
   /*
-const estadoCivil = JSON.parse(decodeURIComponent(request.query.estadoCivil));
-const opcaoSel = request.query.opcaoSel;  
+    const estadoCivil = JSON.parse(decodeURIComponent(request.query.estadoCivil));
+    const opcaoSel = request.query.opcaoSel;  
   */
-
-  console.log(request.query);
-
   const dadosEstadoCivil = {
-      estadoCivil: request.query.estadoCivil,
-      opcaoSel: 'C'
+      estadoCivil: estadoCivil,
+      opcaoSel: opcaoSel
   };
 
   response.render('cadastros/viewCadastroEstadosCivis', { dadosEstadoCivil: dadosEstadoCivil });
