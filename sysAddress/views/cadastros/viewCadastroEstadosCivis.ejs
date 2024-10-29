@@ -58,22 +58,22 @@
     <script>
         let opcaoSel;
         
-        document.addEventListener('DOMContentLoaded', function () {
-            const dadosEstadoCivil = <%- JSON.stringify(dadosEstadoCivil) %>;
-            opcaoSel               = dadosEstadoCivil.opcaoSel;
+        document.addEventListener('DOMContentLoaded', function () {                  
+          const dadosEstadoCivil = <%- JSON.stringify(dadosEstadoCivil) %>;
+          opcaoSel               = dadosEstadoCivil.opcaoSel;
+          console.log(dadosEstadoCivil);
+          habilitaDesabilitaBotoes(opcaoSel);
+          habilitaDesabilitaCampos(opcaoSel);
 
-            habilitaDesabilitaBotoes(opcaoSel);
-            habilitaDesabilitaCampos(opcaoSel);
+          if ((opcaoSel === 'I') || (opcaoSel === 'A')) {
+            $('#modalCadastroEstadoCivil').on('shown.bs.modal', function () {
+                document.getElementById('edtDescricaoEstadoCivil').focus();
+            });
+          };
 
-            if ((opcaoSel === 'I') || (opcaoSel === 'A')) {
-                $('#modalCadastroEstadoCivil').on('shown.bs.modal', function () {
-                    document.getElementById('edtDescricaoEstadoCivil').focus();
-                });
-            };
-
-            if ((opcaoSel === 'A') || (opcaoSel === 'C')) {
-                carregaDados(dadosEstadoCivil);
-            };
+          if ((opcaoSel === 'A') || (opcaoSel === 'C')) {
+            carregaDados(dadosEstadoCivil);
+          };
         });
     </script>
 </body>

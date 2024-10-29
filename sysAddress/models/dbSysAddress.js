@@ -63,6 +63,11 @@ dbSysAddress.prototype.getEstadosCivis = function (callBack) {
   this.dataBaseConnection.query(query, callBack);
 }
 
+dbSysAddress.prototype.getEstadoCivil = function (idEstadoCivil, callBack) {
+  const query = 'CALL sp_CONSULTA_ESTADO_CIVIL(?)';
+  this.dataBaseConnection.query(query, [idEstadoCivil], callBack);
+}
+
 dbSysAddress.prototype.getLogradouros = function (callBack) {
   const query = 'CALL sp_CONSULTA_LOGRADOUROS';
   this.dataBaseConnection.query(query, callBack);
