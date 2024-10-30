@@ -26,8 +26,8 @@ function habilitaDesabilitaCampos(opcaoSel) {
 }
 
 function carregaDados(estadoCivil) {
-  document.getElementById('edtIdEstadoCivil').value        = strZeros(estadoCivil.idEstadoCivil, 3);
-  document.getElementById('edtDescricaoEstadoCivil').value = estadoCivil.descricaoEstadoCivil;
+  document.getElementById('edtIdEstadoCivil').value        = strZeros(estadoCivil.ID_ESTADO_CIVIL, 3);
+  document.getElementById('edtDescricaoEstadoCivil').value = estadoCivil.DESCRICAO_ESTADO_CIVIL;
 }
 
 function validaDados() {

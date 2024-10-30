@@ -1,6 +1,6 @@
 function abreModalInsercaoEstadoCivil(application, request, response) {
   let dadosEstadoCivil = {
-      EstadoCivil: null,
+      estadoCivil: null,
       opcaoSel: 'I'
   };
 
@@ -8,21 +8,22 @@ function abreModalInsercaoEstadoCivil(application, request, response) {
 }
 
 function abreModalConsultaEstadoCivil(application, request, response) {
-  const idEstadoCivil        = request.query.idEstadoCivil;
-  const descricaoEstadoCivil = request.query.descricaoEstadoCivil;
-  const opcaoSel              = request.query.opcaoSel;
-
+  const estadoCivil = JSON.parse(decodeURIComponent(request.query.estadoCivil));
+  const opcaoSel    = request.query.opcaoSel;
+  /*
+    const estadoCivil = JSON.parse(decodeURIComponent(request.query.estadoCivil));
+    const opcaoSel = request.query.opcaoSel;  
+  */
   const dadosEstadoCivil = {
-      idEstadoCivil: idEstadoCivil,
-      descricaoEstadoCivil: descricaoEstadoCivil,
+      estadoCivil: estadoCivil,
       opcaoSel: opcaoSel
   };
 
   response.render('cadastros/viewCadastroEstadosCivis', { dadosEstadoCivil: dadosEstadoCivil });
 }
 
-function realizaConsultaEstadoCivil(application, request, response) {
-  const idEstadoCivil   = request.query.idEstadoCivil;
+function realizaConsultaEstadoCivil(application, request, response) {  
+  const idEstadoCivil    = request.query.idEstadoCivil;
   const opcaoSelecionada = request.query.opcaoSel;
   const connectionDB     = application.config.dbConfig.dbConnection();
   const dbSysAddress     = new application.sysAddress.models.dbSysAddress(connectionDB);
@@ -34,7 +35,7 @@ function realizaConsultaEstadoCivil(application, request, response) {
       }
 
       let dadosEstadoCivil = {
-          EstadoCivil: result[0],
+          estadoCivil: result[0],
           opcaoSel: opcaoSelecionada
       };
 
@@ -45,9 +46,9 @@ function realizaConsultaEstadoCivil(application, request, response) {
 
 function realizaInsercaoEstadoCivil(application, request, response) {
   const descricaoEstadoCivil = request.body.descricaoEstadoCivil;
-  const logIdUsuario          = request.body.logIdUsuario;
-  const connectionDB          = application.config.dbConfig.dbConnection();
-  const dbSysAddress          = new application.sysAddress.models.dbSysAddress(connectionDB);
+  const logIdUsuario         = request.body.logIdUsuario;
+  const connectionDB         = application.config.dbConfig.dbConnection();
+  const dbSysAddress         = new application.sysAddress.models.dbSysAddress(connectionDB);
 
   application.config.dbConfig.dbStartTransaction(connectionDB, function (error) {
       if (error) {
@@ -99,9 +100,9 @@ function realizaInsercaoEstadoCivil(application, request, response) {
 function realizaAlteracaoEstadoCivil(application, request, response) {
   const idEstadoCivil        = request.body.idEstadoCivil;
   const descricaoEstadoCivil = request.body.descricaoEstadoCivil;
-  const logIdUsuario          = request.body.logIdUsuario;
-  const connectionDB          = application.config.dbConfig.dbConnection();
-  const dbSysAddress          = new application.sysAddress.models.dbSysAddress(connectionDB);
+  const logIdUsuario         = request.body.logIdUsuario;
+  const connectionDB         = application.config.dbConfig.dbConnection();
+  const dbSysAddress         = new application.sysAddress.models.dbSysAddress(connectionDB);
 
   application.config.dbConfig.dbStartTransaction(connectionDB, function (error) {
       if (error) {
@@ -152,8 +153,8 @@ function realizaAlteracaoEstadoCivil(application, request, response) {
 
 function realizaExclusaoEstadoCivil(application, request, response) {
   const idEstadoCivil = request.params.idEstadoCivil;
-  const connectionDB   = application.config.dbConfig.dbConnection();
-  const dbSysAddress   = new application.sysAddress.models.dbSysAddress(connectionDB);
+  const connectionDB  = application.config.dbConfig.dbConnection();
+  const dbSysAddress  = new application.sysAddress.models.dbSysAddress(connectionDB);
 
   dbSysAddress.excluiEstadoCivil(idEstadoCivil, 1, 'MOTIVO PADRÃO DE EXCLUSÃO', function (error, result) {
       if (error) {

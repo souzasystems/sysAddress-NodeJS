@@ -79,11 +79,20 @@ function consultaEstadoCivil(idEstadoCivil, opcaoSel) {
       return response.json();
     })
     .then(dadosEstadoCivil => {
+      const queryString = `estadoCivil=${encodeURIComponent(JSON.stringify(dadosEstadoCivil.estadoCivil))}&opcaoSel=${encodeURIComponent(dadosEstadoCivil.opcaoSel)}`;
+
+      /*
+      const queryString = `estadoCivil=${encodeURIComponent(JSON.stringify(dadosEstadoCivil.estadoCivil))}&opcaoSel=${encodeURIComponent(dadosEstadoCivil.opcaoSel)}`;
+
+      window.location.href = `/AbreConsultaEstadoCivil?${queryString}`;
+
+
       const queryString = new URLSearchParams({
-        idEstadoCivil: dadosEstadoCivil.estadoCivil[0].ID_TIPO_ENDERECO,
-        descricaoEstadoCivil: dadosEstadoCivil.estadoCivil[0].DESCRICAO_TIPO_ENDERECO,
+        idEstadoCivil: dadosEstadoCivil.estadoCivil[0].ID_ESTADO_CIVIL,
+        descricaoEstadoCivil: dadosEstadoCivil.estadoCivil[0].DESCRICAO_ESTADO_CIVIL,
         opcaoSel: dadosEstadoCivil.opcaoSel
       }).toString();
+      */
       window.location.href = `/AbreConsultaEstadoCivil?${queryString}`;
     })
     .catch(error => console.error('Houve um erro ao realizar a consulta de estado civil. Motivo: ' + error));
@@ -142,7 +151,7 @@ function adicionaRotasBotoes() {
 };
 
 function adicionaRotasGrid() {
-  document.querySelectorAll('#gridTiposEndereco tr').forEach(function (row) {
+  document.querySelectorAll('#gridEstadosCivis tr').forEach(function (row) {
     row.addEventListener('click', function () {
       if (event.target.tagName === 'TD') {
         const indexCol = event.target.cellIndex;

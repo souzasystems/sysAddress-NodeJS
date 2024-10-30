@@ -3,12 +3,12 @@ function routeCadastroEstadosCivis(application) {
     application.sysAddress.controllers.cadastros.controlCadastroEstadosCivis.abreModalInsercaoEstadoCivil(application, request, response);
   });
 
-  application.get('/ConsultaEstadoCivil', function (request, response) {
+  application.get('/AbreConsultaEstadoCivil', function (request, response) {
     application.sysAddress.controllers.cadastros.controlCadastroEstadosCivis.abreModalConsultaEstadoCivil(application, request, response);
   });
 
-  application.get('/AbreConsultaEstadoCivil', function (request, response) {
-    application.sysAddress.controllers.cadastros.controlCadastroEstadosCivis.abreModalConsultaEstadoCivil(application, request, response);
+  application.get('/ConsultaEstadoCivil', function (request, response) {
+    application.sysAddress.controllers.cadastros.controlCadastroEstadosCivis.consultaEstadoCivil(application, request, response);
   }); 
 
   application.post('/RealizaInsercaoEstadoCivil', function (request, response) {
