@@ -1,0 +1,9 @@
+#edtIdBanco,
+#edtCodigoISPB {
+  text-align: center;
+}
+
+#edtIdBanco,
+#edtDescricaoBanco {
+  text-transform: uppercase;
+}
