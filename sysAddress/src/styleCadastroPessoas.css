@@ -1,0 +1,33 @@
+#edtIdPessoa,
+#edtDataCadastro,
+#edtIdentidade,
+#edtCPF,
+#edtDataNascimento {
+  text-align: center;
+}
+
+#edtNome,
+#edtDataCadastro,
+#edtIdentidade,
+#edtDataNascimento,
+#edtNomePai,
+#edtNomeMae {
+  text-transform: uppercase;
+}
+
+#edtEmail {
+  text-transform: lowercase;
+}
+
+#divChkAtivo {
+  display: inline-block;
+  float: left;
+  margin-left: 16px;
+}
+
+/*
+#lblChkAtivo {
+  display: flex;
+  align-items: end;
+}
+*/
