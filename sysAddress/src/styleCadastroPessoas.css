@@ -13,16 +13,12 @@
 #edtNomePai,
 #edtNomeMae {
   text-transform: uppercase;
+  color: blue;
+  background-color: #ffffdf;
 }
 
 #edtEmail {
   text-transform: lowercase;
-}
-
-#divChkAtivo {
-  display: inline-block;
-  float: left;
-  margin-left: 16px;
 }
 
 /*
