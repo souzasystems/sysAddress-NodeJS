@@ -1,7 +1,6 @@
 $(document).ready(function () {
   $('#modalEstadosCivis').modal('show'); //Esse código é em jQuery.
 
-  // Redirecionar para /TelaInicial ao fechar o modal
   $('#modalEstadosCivis').on('hide.bs.modal', function (event) {
     if ($(event.target).hasClass('modal')) {
       window.location.href = '/TelaInicial';
@@ -27,7 +26,8 @@ function excluiEstadoCivil(idEstadoCivil, descricaoEstadoCivil) {
     confirmButtonText: 'SIM',
     cancelButtonText: 'NÃO',
     width: '80%',
-  }).then((result) => {
+  })
+  .then((result) => {
     if (result.isConfirmed) {
       fetch(`/ExcluiEstadoCivil/${idEstadoCivil}`, { method: 'DELETE' })
         .then(response => {
@@ -45,9 +45,8 @@ function excluiEstadoCivil(idEstadoCivil, descricaoEstadoCivil) {
             icon: "success",
             confirmButtonText: 'OK'
           }).then((result) => {
-            // Verifica se o botão "OK" foi clicado
             if (result.isConfirmed) {
-              window.location.href = '/PesquisaTiposEndereco';
+              window.location.href = '/PesquisaEstadosCivis';
             }
           });
         })
@@ -81,18 +80,6 @@ function consultaEstadoCivil(idEstadoCivil, opcaoSel) {
     .then(dadosEstadoCivil => {
       const queryString = `estadoCivil=${encodeURIComponent(JSON.stringify(dadosEstadoCivil.estadoCivil))}&opcaoSel=${encodeURIComponent(dadosEstadoCivil.opcaoSel)}`;
 
-      /*
-      const queryString = `estadoCivil=${encodeURIComponent(JSON.stringify(dadosEstadoCivil.estadoCivil))}&opcaoSel=${encodeURIComponent(dadosEstadoCivil.opcaoSel)}`;
-
-      window.location.href = `/AbreConsultaEstadoCivil?${queryString}`;
-
-
-      const queryString = new URLSearchParams({
-        idEstadoCivil: dadosEstadoCivil.estadoCivil[0].ID_ESTADO_CIVIL,
-        descricaoEstadoCivil: dadosEstadoCivil.estadoCivil[0].DESCRICAO_ESTADO_CIVIL,
-        opcaoSel: dadosEstadoCivil.opcaoSel
-      }).toString();
-      */
       window.location.href = `/AbreConsultaEstadoCivil?${queryString}`;
     })
     .catch(error => console.error('Houve um erro ao realizar a consulta de estado civil. Motivo: ' + error));
@@ -106,8 +93,7 @@ function carregaGridEstadosCivis(estadosCivis) {
   const gridEstadosCivis = document.getElementById('gridEstadosCivis');
 
   estadosCivis.forEach(estadoCivil => {
-    const row        = document.createElement('tr');
-    row.dataset.code = estadoCivil.ID_ESTADO_CIVIL;
+    const row = document.createElement('tr');
 
     const idEstadoCivilCell       = document.createElement('td');
     idEstadoCivilCell.textContent = strZeros(estadoCivil.ID_ESTADO_CIVIL, 3);
@@ -122,7 +108,7 @@ function carregaGridEstadosCivis(estadosCivis) {
     actionsCell.className = 'acoes-col';
     actionsCell.innerHTML = `
         <button type="button" class="btn btn-secondary btn-sm btnAlterar" data-id=${estadoCivil.ID_ESTADO_CIVIL}>ALTERAR</button>
-        <button type="button" class="btn btn-danger btn-sm btnExcluir" data-id=${estadoCivil.ID_ESTADO_CIVIL} data-descricao=${estadoCivil.DESCRICAO_ESTADO_CIVIL}>EXCLUIR</button>
+        <button type="button" class="btn btn-danger btn-sm btnExcluir" data-id=${estadoCivil.ID_ESTADO_CIVIL} data-descricao="${estadoCivil.DESCRICAO_ESTADO_CIVIL}">EXCLUIR</button>
       `;
 
     row.appendChild(idEstadoCivilCell);
@@ -145,7 +131,7 @@ function adicionaRotasBotoes() {
 
   for (let x = 0; x < buttonsDelete.length; x++) {
     buttonsDelete[x].addEventListener('click', function () {
-      excluiEstadoCivil(this.getAttribute('data-id'), this.getAttribute('data-descricao'));
+      excluiEstadoCivil(this.dataset.id, this.dataset.descricao);
     });
   };
 };

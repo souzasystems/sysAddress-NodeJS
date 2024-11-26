@@ -2,8 +2,21 @@
 #edtDataCadastro,
 #edtIdentidade,
 #edtCPF,
-#edtDataNascimento {
+#edtDataNascimento,
+#edtCodBanco {
   text-align: center;
+}
+
+#container-tipo-conta-poupanca {
+  margin-left: 30px;
+}
+
+#divPagtoPix {
+  padding-left: 15px;
+}
+
+#divChkPagtoPix {
+  height: inherit;
 }
 
 #edtNome,
@@ -13,8 +26,6 @@
 #edtNomePai,
 #edtNomeMae {
   text-transform: uppercase;
-  color: blue;
-  background-color: #ffffdf;
 }
 
 #edtEmail {

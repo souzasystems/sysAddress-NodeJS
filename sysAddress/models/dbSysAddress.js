@@ -68,6 +68,42 @@ dbSysAddress.prototype.getEstadoCivil = function (idEstadoCivil, callBack) {
   this.dataBaseConnection.query(query, [idEstadoCivil], callBack);
 }
 
+dbSysAddress.prototype.insereEstadoCivil = function (descricaoEstadoCivil, logIdUsuario, callBack) {
+  let query = `CALL sp_INSERE_ESTADO_CIVIL(?, ?, @p_ID_ESTADO_CIVIL)`;
+
+  this.dataBaseConnection.query(query, [descricaoEstadoCivil, logIdUsuario], (error) => {
+    if (error) {
+      return callBack(error);
+    }
+
+    query = 'SELECT @p_ID_ESTADO_CIVIL AS idEstadoCivil';
+
+    this.dataBaseConnection.query(query, (error, result) => {
+      if (error) {
+        return callBack(error);
+      }
+
+      if (result[0].idEstadoCivil != null && result[0].idEstadoCivil !== undefined) {
+        const idEstadoCivil = result[0].idEstadoCivil;
+        callBack(null, idEstadoCivil);
+      }
+      else {
+        callBack(new Error('Houve um erro ao obter o código do estado civil gerado.'));
+      }
+    });
+  });
+};
+
+dbSysAddress.prototype.alteraEstadoCivil = function (idEstadoCivil, descricaoEstadoCivil, logIdUsuario, callBack) {
+  const query = 'CALL sp_ALTERA_ESTADO_CIVIL(?, ?, ?)';
+  this.dataBaseConnection.query(query, [idEstadoCivil, descricaoEstadoCivil, logIdUsuario], callBack);
+}
+
+dbSysAddress.prototype.excluiEstadoCivil = function (idEstadoCivil, idLogUsuario, motivoExclusao, callBack) {
+  const query = 'CALL sp_EXCLUI_ESTADO_CIVIL(?, ?, ?)';
+  this.dataBaseConnection.query(query, [idEstadoCivil, idLogUsuario, motivoExclusao], callBack);
+}
+
 dbSysAddress.prototype.getLogradouros = function (callBack) {
   const query = 'CALL sp_CONSULTA_LOGRADOUROS';
   this.dataBaseConnection.query(query, callBack);

@@ -51,7 +51,7 @@
     <script src="javascript/scriptsCadastroTiposEndereco.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const tiposTelefone = < % -JSON.stringify(tiposTelefone) % > ;
+        const tiposTelefone = <%- JSON.stringify(tiposTelefone) %>;
   
         carregaGridTiposTelefone(tiposTelefone);
       });

@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pessoas</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="styleCadastroPessoas.css" />
 </head>
 
 <body>
-  <div class="modal fade" data-bs-backdrop="static" id="modalCadastroPessoa" tabindex="-1" role="dialog"
+  <div class="modal fade" data-backdrop="static" id="modalCadastroPessoa" tabindex="-1" role="dialog"
     aria-labelledby="modalCadastroPessoa" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -23,46 +23,54 @@
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
-              type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+            <a class="nav-link active" id="dados-pessoais-tab" data-toggle="tab" href="#dados-pessoais-tab-pane" role="tab"
+              aria-controls="dados-pessoais-tab-pane" aria-selected="true">
               DADOS PESSOAIS
-            </button>
+            </a>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
-              type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile-tab-pane" role="tab"
+              aria-controls="profile-tab-pane" aria-selected="false">
               TELEFONES
-            </button>
+            </a>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
-              type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact-tab-pane" role="tab"
+              aria-controls="contact-tab-pane" aria-selected="false">
               ENDEREÇOS
-            </button>
+            </a>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="dados-bancarios-tab" data-bs-toggle="tab"
-              data-bs-target="#dados-bancarios-tab-pane" type="button" role="tab"
+            <a class="nav-link" id="dados-bancarios-tab" data-toggle="tab" href="#dados-bancarios-tab-pane" role="tab"
               aria-controls="dados-bancarios-tab-pane" aria-selected="false">
               DADOS BANCÁRIOS
-            </button>
+            </a>
           </li>
         </ul>
 
         <div class="modal-body">
           <form id="formCadastroPessoa" novalidate>
             <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+              <div class="tab-pane fade show active" id="dados-pessoais-tab-pane" role="tabpanel" aria-labelledby="dados-pessoais-tab"
                 tabindex="0">
 
                 <div class="row">
                   <div class="form-group col-md-2">
                     <label for="edtIdPessoa">CÓDIGO</label>
                     <input type="text" class="form-control" id="edtIdPessoa" name="edtIdPessoa" maxlength="6"
-                      value="012345" disabled>
+                      value="12345" disabled>
                   </div>
 
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-3">
+                    <label for="cbbTipoPessoa">TIPO DE PESSOA</label>
+                    <select class="form-control" id="cbbTipoPessoa" name="cbbTipoPessoa">
+                      <option value="nao-informado"></option>
+                      <option value="masculino">PESSOA FÍSICA</option>
+                      <option value="feminino">PESSOA JURÍDICA</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-md-4">
                     <label for="edtNome">NOME</label>
                     <input type="text" class="form-control" id="edtNome" name="edtNome" maxlength="80"
                       value="André Henrique de Paula Souza">
@@ -70,10 +78,10 @@
 
                   <div class="form-group col-md-2">
                     <label for="edtDataCadastro">CADASTRADO EM</label>
-                    <input type="date" class="form-control" id="edtDataCadastro" name="edtDataCadastro">
+                    <input type="date" class="form-control" id="edtDataCadastro" name="edtDataCadastro" disabled>
                   </div>
 
-                  <div class="form-group form-check col-md-2" id="divChkAtivo">
+                  <div class="form-group form-check col-md-1 d-flex align-items-center" id="divChkAtivo">
                     <input type="checkbox" class="form-check-input" id="chkAtivo" name="chkAtivo">
                     <label class="form-check-label" id="lblChkAtivo" for="chkAtivo">ATIVO</label>
                   </div>
@@ -82,7 +90,7 @@
                 <div class="row">
                   <div class="form-group col-md-4">
                     <label for="edtNomeMae">NOME DA MÃE</label>
-                    <input type="text" class="form-control" id="edtNomeMae" name="edtNomeMae" maxlength="80" disabled>
+                    <input type="text" class="form-control" id="edtNomeMae" name="edtNomeMae" maxlength="80">
                   </div>
 
                   <div class="form-group col-md-4">
@@ -105,6 +113,7 @@
                   <div class="form-group col-md-3">
                     <label for="edtSexo">SEXO</label>
                     <select class="form-control" id="edtSexo" name="edtSexo">
+                      <option value="nao-informado"></option>
                       <option value="masculino">MASCULINO</option>
                       <option value="feminino">FEMININO</option>
                       <option value="nao-binario">NÃO-BINÁRIO</option>
@@ -119,6 +128,7 @@
                   <div class="form-group col-md-3">
                     <label for="cbbEstadoCivil">ESTADO CIVIL</label>
                     <select class="form-control" id="cbbEstadoCivil" name="cbbEstadoCivil">
+                      <option value="nao-informado"></option>
                       <option value="masculino">MASCULINO</option>
                       <option value="feminino">FEMININO</option>
                       <option value="nao-binario">NÃO-BINÁRIO</option>
@@ -145,24 +155,24 @@
                   <div class="form-group col-md-12">
                     <label for="mmoObservacoes">OBSERVAÇÕES</label>
                     <textarea class="form-control" id="mmoObservacoes" name="mmoObservacoes" rows="3"></textarea>
-                  </div>                
+                  </div>
                 </div>
               </div>
-              
+
               <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
                 tabindex="0">
                 456
               </div>
-              
+
               <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
                 tabindex="0">
                 789
               </div>
-              
-              <div class="tab-pane fade" id="dados-bancarios-tab-pane" role="tabpanel" aria-labelledby="dados-bancarios-tab-pane"
-                tabindex="0">
+
+              <div class="tab-pane fade" id="dados-bancarios-tab-pane" role="tabpanel"
+                aria-labelledby="dados-bancarios-tab-pane" tabindex="0">
                 <div class="row">
-                  <div class="form-group col-md-2">
+                  <div class="form-group col-md-1">
                     <label for="edtCodBanco">BANCO</label>
                     <input type="text" class="form-control" id="edtCodBanco" name="edtCodBanco" maxlength="3">
                   </div>
@@ -182,9 +192,10 @@
                     <input type="text" class="form-control" id="edtDigitoAgencia" name="edtDigitoAgencia" maxlength="3">
                   </div>
 
-                  <div class="form-group form-check col-md-2" id="divAgenciaSemDigito">
+                  <div class="form-group form-check col-md-3 d-flex align-items-center" id="divAgenciaSemDigito" style="background-color: bisque;">
                     <input type="checkbox" class="form-check-input" id="chkAgenciaSemDigito" name="chkAgenciaSemDigito">
-                    <label class="form-check-label" id="lblChkAgenciaSemDigito" for="chkAgenciaSemDigito">AGÊNCIA SEM DÍGITO</label>
+                    <label class="form-check-label" id="lblChkAgenciaSemDigito" for="chkAgenciaSemDigito">AGÊNCIA SEM
+                      DÍGITO</label>
                   </div>
                 </div>
 
@@ -193,50 +204,62 @@
                     <label for="edtConta">CONTA</label>
                     <input type="text" class="form-control" id="edtConta" name="edtConta" maxlength="3">
                   </div>
-
+                
                   <div class="form-group col-md-2">
-                    <label for="edtDigitoConta">BANCO</label>
+                    <label for="edtDigitoConta">DV. CONTA</label>
                     <input type="text" class="form-control" id="edtDigitoConta" name="edtDigitoConta" disabled>
                   </div>
-
-                  <div class="form-group col-md-2">
-                    <label for="edtAgencia">TIPO DE CONTA</label>
-                    <!-- Adicionar Radio Group -->>
+                
+                  <div class="form-group col-md-8" style="background-color: bisque;">
+                    <label for="rdgrpTipoConta">TIPO DE CONTA</label>
+                
+                    <div class="d-flex align-items-center">
+                      <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="tipoConta" id="contaCorrente" value="corrente">
+                        <label class="form-check-label" for="contaCorrente">CONTA CORRENTE</label>
+                      </div>
+                      
+                      <div class="form-check" id="container-tipo-conta-poupanca">
+                        <input class="form-check-input" type="radio" name="tipoConta" id="contaPoupanca" value="poupanca">
+                        <label class="form-check-label" for="contaPoupanca">CONTA POUPANÇA</label>
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="form-group form-check col-md-2" id="divPagtoPix">
+                </div>               
+                  
+                <div class="row d-flex align-items-center" id="divPagtoPix" style="background-color: bisque;">
+                  <div class="form-group form-check col-md-4" id="divChkPagtoPix" style="background-color: yellow;">
                     <input type="checkbox" class="form-check-input" id="chkPagtoPix" name="chkPagtoPix">
-                    <label class="form-check-label" id="lblChkPagtoPix" for="chkPagtoPix">UTILIZAR TRANSFERÊNCIA BANCÁRIA VIA PIX</label>
+                    <label class="form-check-label" id="lblChkPagtoPix" for="chkPagtoPix">UTILIZAR TRANSFERÊNCIA
+                      BANCÁRIA VIA PIX</label>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="form-group col-md-3">
+                  <div class="form-group col-md-4">
                     <label for="cbbTipoTransferencia">TIPO DE TRANSFERÊNCIA</label>
                     <select class="form-control" id="cbbTipoTransferencia" name="cbbTipoTransferencia">
-                      <option value="masculino">Conta Corrente</option>
-                      <option value="feminino">Conta Pagamento</option>
-                      <option value="nao-binario">Conta Poupança</option>
-                      <option value="genero-fluido">Chave de Endereçamento (Chave Pix)</option>
+                      <option value="1">Conta Corrente</option>
+                      <option value="2">Conta Pagamento</option>
+                      <option value="3">Conta Poupança</option>
+                      <option value="4">Chave de Endereçamento (Chave Pix)</option>
                     </select>
                   </div>
 
                   <div class="form-group col-md-3">
                     <label for="cbbTipoChave">TIPO DE CHAVE PIX</label>
                     <select class="form-control" id="cbbTipoChave" name="cbbTipoChave">
-                      <option value="masculino">Telefone</option>
-                      <option value="feminino">E-mail</option>
-                      <option value="nao-binario">CPF/CNPJ</option>
-                      <option value="genero-fluido">Chave Aleatória</option>
-                      <option value="genero-fluido">Dados bancários</option>
+                      <option value="1">Telefone</option>
+                      <option value="2">E-mail</option>
+                      <option value="3">CPF/CNPJ</option>
+                      <option value="4">Chave Aleatória</option>
+                      <option value="5">Dados bancários</option>
                     </select>
                   </div>
 
-                  <div class="form-group col-md-2">
+                  <div class="form-group col-md-5">
                     <label for="edtChavePIX">CHAVE PIX</label>
-                    <input type="text" class="form-control" id="edtChavePIX" name="edtChavePIX" maxlength="3">
+                    <input type="text" class="form-control" id="edtChavePIX" name="edtChavePIX" maxlength="60">
                   </div>
                 </div>
               </div>
@@ -245,17 +268,16 @@
         </div> <!-- <div class="modal-body"> -->
 
         <div class="modal-footer">
-          <button type="button" id="btnCancelar" class="btn btn-info" data-bs-dismiss="modal">CANCELAR</button>
+          <button type="button" id="btnCancelar" class="btn btn-info" data-dismiss="modal">CANCELAR</button>
           <button type="button" id="btnSalvar" class="btn btn-primary" disabled>SALVAR</button>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Scripts atualizados para o Bootstrap 4.5.2 -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="scriptsCadastroPessoas.js"></script>
 </body>
 

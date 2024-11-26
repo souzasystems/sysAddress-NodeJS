@@ -16,11 +16,11 @@ function routeCadastroEstadosCivis(application) {
   });
 
   application.put('/RealizaAlteracaoEstadoCivil', function (request, response) {
-    application.sysAddress.controllers.cadastros.controlCadastroEstadosCivis.alteraTipoEndereco(application, request, response);
+    application.sysAddress.controllers.cadastros.controlCadastroEstadosCivis.alteraEstadoCivil(application, request, response);
   });
 
   application.delete('/ExcluiEstadoCivil/:idEstadoCivil', function (request, response) {
-    application.sysAddress.controllers.cadastros.controlCadastroEstadosCivis.excluiTipoEndereco(application, request, response);
+    application.sysAddress.controllers.cadastros.controlCadastroEstadosCivis.excluiEstadoCivil(application, request, response);
   });
 }
 

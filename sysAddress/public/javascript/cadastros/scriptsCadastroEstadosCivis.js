@@ -12,15 +12,15 @@ function habilitaDesabilitaCampos(opcaoSel) {
   switch (opcaoSel) {
     case 'I':
       document.getElementById('modalCadastroEstadoCivilLabel').textContent = 'ESTADOS CIVIS - INSERÇÃO';
-      document.getElementById('modalCadastroEstadoCivil').disabled         = false;
+      document.getElementById('edtDescricaoEstadoCivil').disabled          = false;
       break;
     case 'A':
       document.getElementById('modalCadastroEstadoCivilLabel').textContent = 'ESTADOS CIVIS - ALTERAÇÃO';
-      document.getElementById('modalCadastroEstadoCivil').disabled         = false;
+      document.getElementById('edtDescricaoEstadoCivil').disabled          = false;
       break;
     case 'C':
       document.getElementById('modalCadastroEstadoCivilLabel').textContent = 'ESTADOS CIVIS - CONSULTA';
-      document.getElementById('modalCadastroEstadoCivil').disabled         = true;
+      document.getElementById('edtDescricaoEstadoCivil').disabled          = true;
       break;
   }
 }
@@ -56,7 +56,7 @@ document.getElementById('btnSalvar').addEventListener('click', function () {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        descricaoTipoEndereco: (document.getElementById('edtDescricaoEstadoCivil').value).toUpperCase(),
+        descricaoEstadoCivil: (document.getElementById('edtDescricaoEstadoCivil').value).toUpperCase(),
         logIdUsuario: 1
       })
     })
@@ -96,8 +96,8 @@ document.getElementById('btnSalvar').addEventListener('click', function () {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        idTipoEndereco: parseInt(document.getElementById('edtIdEstadoCivil').value),
-        descricaoTipoEndereco: (document.getElementById('edtDescricaoEstadoCivil').value).toUpperCase(),
+        idEstadoCivil: parseInt(document.getElementById('edtIdEstadoCivil').value),
+        descricaoEstadoCivil: (document.getElementById('edtDescricaoEstadoCivil').value).toUpperCase(),
         logIdUsuario: 1
       })
     })

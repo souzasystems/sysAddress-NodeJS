@@ -64,14 +64,14 @@ function realizaInsercaoEstadoCivil(application, request, response) {
                   }
 
                   application.config.dbConfig.dbDisconnection(connectionDB);
-                  return response.status(500).json({ message: 'Houve um erro ao alterar o registro. Motivo: ' + error });
+                  return response.status(500).json({ message: 'Houve um erro ao inserir o registro. Motivo: ' + error });
               });
 
               return;
           }
 
           let dadosEstadoCivil = {
-              message: 'O registro foi alterado com sucesso!',
+              message: 'O registro foi inserido com sucesso!',
               EstadoCivil: idEstadoCivil,
               opcaoSel: 'A'
           };
@@ -84,7 +84,7 @@ function realizaInsercaoEstadoCivil(application, request, response) {
                       }
 
                       application.config.dbConfig.dbDisconnection(connectionDB);
-                      return response.status(500).json({ message: 'Houve um erro ao alterar o registro. Motivo: ' + error });
+                      return response.status(500).json({ message: 'Houve um erro ao inserir o registro. Motivo: ' + error });
                   });
 
                   return;
