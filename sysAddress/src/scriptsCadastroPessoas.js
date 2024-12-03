@@ -8,7 +8,6 @@ $(document).ready(function () {
   });
 });
 
-
 window.onload = function () {
   const dataCadastroInput = document.getElementById("edtDataCadastro");
   const dataAtual         = new Date().toISOString().split("T")[0];

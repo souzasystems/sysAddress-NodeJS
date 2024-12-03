@@ -1,0 +1,11 @@
+#edtIdLancamento,
+#edtDataEmissao,
+#edtDataPrevPagto,
+#edtDataVencto,
+#edtDataPagto {
+  text-align: center;
+}
+
+#edtValorTotal {
+  text-align: right;
+}
