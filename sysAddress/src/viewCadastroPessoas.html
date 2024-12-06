@@ -55,16 +55,16 @@
               <div class="tab-pane fade show active" id="dados-pessoais-tab-pane" role="tabpanel"
                 aria-labelledby="dados-pessoais-tab" tabindex="0">
 
-                <div class="row">
-                  <div class="row" style="background-color: yellow;">
-                    <div class="form-group col-md-6">
+                <div class="form-row">
+
+                    <div class="form-group col-md-1">
                       <label for="edtIdPessoa">CÓDIGO</label>
                       <input type="text" class="form-control" id="edtIdPessoa" name="edtIdPessoa" maxlength="6"
-                        value="12345" disabled>
+                        value="123456" disabled>
                     </div>
-                  </div>
 
-                  <div class="form-group col-md-3">
+
+                  <div class="form-group col-md-2">
                     <label for="cbbTipoPessoa">TIPO DE PESSOA</label>
                     <select class="form-control" id="cbbTipoPessoa" name="cbbTipoPessoa">
                       <option value="nao-informado"></option>
@@ -73,7 +73,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group col-md-4">
+                  <div class="form-group col-md-5">
                     <label for="edtNome">NOME</label>
                     <input type="text" class="form-control" id="edtNome" name="edtNome" maxlength="80"
                       value="André Henrique de Paula Souza">
@@ -84,13 +84,13 @@
                     <input type="date" class="form-control" id="edtDataCadastro" name="edtDataCadastro" disabled>
                   </div>
 
-                  <div class="form-group form-check col-md-1 d-flex align-items-center" id="divChkAtivo">
+                  <div class="form-group form-check col-md-2 d-flex align-items-center">
                     <input type="checkbox" class="form-check-input" id="chkAtivo" name="chkAtivo">
                     <label class="form-check-label" id="lblChkAtivo" for="chkAtivo">ATIVO</label>
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="edtNomeMae">NOME DA MÃE</label>
                     <input type="text" class="form-control" id="edtNomeMae" name="edtNomeMae" maxlength="80">
@@ -112,7 +112,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-3">
                     <label for="edtSexo">SEXO</label>
                     <select class="form-control" id="edtSexo" name="edtSexo">
@@ -154,7 +154,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="mmoObservacoes">OBSERVAÇÕES</label>
                     <textarea class="form-control" id="mmoObservacoes" name="mmoObservacoes" rows="3"></textarea>
@@ -164,7 +164,7 @@
 
               <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
                 tabindex="0">
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-3">
                     <label for="cbbTiposTelefone">TIPO DE TELEFONE</label>
                     <select class="form-control" id="cbbTiposTelefone" name="cbbTiposTelefone">
@@ -188,14 +188,14 @@
                       maxlength="9">
                   </div>
 
-                  <div class="form-group col-md-1 d-flex align-items-end">
+                  <div class="form-group col-md-2 d-flex align-items-end">
                     <button class="btn btn-primary">
                       <i class="fas fa-hand-point-down"></i>
                     </button>
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-7">
                     <table class="table table-striped table-bordered">
                       <thead>
@@ -234,7 +234,7 @@
 
               <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
                 tabindex="0">
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-3">
                     <label for="cbbTiposEndereco">TIPO DE ENDEREÇO</label>
                     <select class="form-control" id="cbbTiposEndereco" name="cbbTiposEndereco">
@@ -254,7 +254,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="edtLogradouro">LOGRADOURO</label>
                     <input type="text" class="form-control" id="edtLogradouro" name="edtLogradouro" disabled>
@@ -266,7 +266,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-2">
                     <label for="edtNumero">NÚMERO</label>
                     <input type="text" class="form-control" id="edtNumero" name="edtNumero" maxlength="5">
@@ -283,7 +283,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="edtCidade">CIDADE</label>
                     <input type="text" class="form-control" id="edtCidade" name="edtCidade" disabled>
@@ -301,7 +301,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-12">
                     <div style="overflow-x: auto; white-space: nowrap;">
                       <div class="table-responsive">
@@ -352,7 +352,7 @@
 
               <div class="tab-pane fade" id="dados-bancarios-tab-pane" role="tabpanel"
                 aria-labelledby="dados-bancarios-tab-pane" tabindex="0">
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-1">
                     <label for="edtCodBanco">BANCO</label>
                     <input type="text" class="form-control" id="edtCodBanco" name="edtCodBanco" maxlength="3">
@@ -373,14 +373,14 @@
                     <input type="text" class="form-control" id="edtDigitoAgencia" name="edtDigitoAgencia" maxlength="3">
                   </div>
 
-                  <div class="form-group form-check col-md-3 d-flex align-items-center" id="divAgenciaSemDigito">
+                  <div class="form-group form-check col-md-3 d-flex align-items-center">
                     <input type="checkbox" class="form-check-input" id="chkAgenciaSemDigito" name="chkAgenciaSemDigito">
                     <label class="form-check-label" id="lblChkAgenciaSemDigito" for="chkAgenciaSemDigito">AGÊNCIA SEM
                       DÍGITO</label>
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-2">
                     <label for="edtConta">CONTA</label>
                     <input type="text" class="form-control" id="edtConta" name="edtConta" maxlength="3">
@@ -402,23 +402,23 @@
                       </div>
 
                       <div class="form-check" id="container-tipo-conta-poupanca">
-                        <input class="form-check-input" type="radio" name="tipoConta" id="contaPoupanca"
+                        <input class="form-check-input" type="radio" name="tipoConta" id="rgrpContaPoupanca"
                           value="poupanca">
-                        <label class="form-check-label" for="contaPoupanca">CONTA POUPANÇA</label>
+                        <label class="form-check-label" for="rgrpContaPoupanca" id="lblRgrpContaPoupanca">CONTA POUPANÇA</label>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="row d-flex align-items-center" id="divPagtoPix">
-                  <div class="form-group form-check col-md-4" id="divChkPagtoPix">
+                <div class="row d-flex align-items-center">
+                  <div class="form-group form-check col-md-5">
                     <input type="checkbox" class="form-check-input" id="chkPagtoPix" name="chkPagtoPix">
                     <label class="form-check-label" id="lblChkPagtoPix" for="chkPagtoPix">UTILIZAR TRANSFERÊNCIA
                       BANCÁRIA VIA PIX</label>
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="cbbTipoTransferencia">TIPO DE TRANSFERÊNCIA</label>
                     <select class="form-control" id="cbbTipoTransferencia" name="cbbTipoTransferencia">

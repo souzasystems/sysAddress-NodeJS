@@ -4,6 +4,7 @@
 }
 
 #edtIdBanco,
-#edtDescricaoBanco {
+#edtDescricaoBanco,
+#edtCodigoISPB {
   text-transform: uppercase;
 }
